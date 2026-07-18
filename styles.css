@@ -257,9 +257,10 @@ button { color: inherit; font: inherit; }
 .newsletter-status { position: absolute; right: 0; bottom: calc(100% + .7rem); left: 0; margin: 0; text-align: center; color: #ffdc72; font: 400 1rem/1 var(--condensed); letter-spacing: .04em; }
 .newsletter-form.is-sent { box-shadow: 0 0 0 4px var(--lime), 0 8px 0 rgba(55,4,19,.28); }
 
-.site-footer { padding: 1.2rem var(--page-pad); background: var(--orange); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-bottom: 3px solid var(--ink); }
+.site-footer { padding: 1.2rem var(--page-pad); background: var(--ink); color: #a7a7a7; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-bottom: 3px solid var(--ink); }
 .site-footer p { margin: 0; font-size: .8rem; font-weight: 700; }
 .brand-footer { width: 112px; }
+.brand-footer img { filter: invert(68%); }
 .footer-signoff { display: grid; gap: .35rem; text-align: right; }
 .footer-credit { font-weight: 500 !important; }
 .footer-credit strong { font-weight: 800; }
