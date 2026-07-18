@@ -241,11 +241,11 @@ button { color: inherit; font: inherit; }
 .store-card p { margin: 0; line-height: 1.45; }
 
 .newsletter { position: relative; min-height: 1080px; overflow: hidden; isolation: isolate; background-color: var(--orange); background-image: radial-gradient(circle at 5% 18%, #ffdc72 0 10.5%, transparent 10.7%), radial-gradient(circle at 44% 5%, #ffdc72 0 14%, transparent 14.2%), radial-gradient(circle at 82% -6%, #ffdc72 0 14%, transparent 14.2%), radial-gradient(circle at 101% 19%, #ffdc72 0 12%, transparent 12.2%), radial-gradient(circle at 96% 55%, #ffdc72 0 9%, transparent 9.2%); border-bottom: 3px solid var(--ink); }
-.newsletter-orbit { position: absolute; top: clamp(6.5rem, 9vw, 9rem); bottom: 0; left: 50%; width: min(94vw, 1500px); min-height: 920px; overflow: hidden; color: #ffdc72; background: #bd0a35; border-radius: 50% 50% 0 0 / 38% 38% 0 0; transform: translateX(-50%); }
+.newsletter-orbit { position: absolute; top: clamp(6.5rem, 9vw, 9rem); bottom: 0; left: 50%; width: 100%; min-height: 920px; overflow: hidden; color: #ffdc72; background: #bd0a35; border-radius: 50% 50% 0 0 / 38% 38% 0 0; transform: translateX(-50%); }
 .newsletter-arc-title { position: absolute; z-index: 4; top: 1.2rem; left: 50%; width: 90%; height: auto; overflow: visible; transform: translateX(-50%); }
 .newsletter-arc-title text { fill: currentColor; font-family: var(--condensed); font-weight: 400; }
-.newsletter-arc-heading { font-size: 112px; letter-spacing: 2px; }
-.newsletter-arc-copy { font-size: 23px; letter-spacing: .8px; }
+.newsletter-arc-heading { font-size: 104px; letter-spacing: 1.7px; }
+.newsletter-arc-copy { font-size: 19px; letter-spacing: .7px; }
 .newsletter-product { position: absolute; z-index: 1; right: auto; bottom: 2.8rem; left: 50%; width: min(104%, 1275px); aspect-ratio: 1660 / 948; transform: translateX(-50%); }
 .newsletter-product img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 20px 18px rgba(76,0,25,.2)); }
 .newsletter-form { position: absolute; z-index: 5; right: 0; bottom: 2rem; left: 0; width: min(780px, 82%); min-height: 66px; margin: auto; padding: .4rem; display: grid; grid-template-columns: 1fr auto; gap: .45rem; border-radius: 999px; background: var(--cream); box-shadow: 0 8px 0 rgba(55,4,19,.28); }
@@ -264,7 +264,7 @@ button { color: inherit; font: inherit; }
 .closing-links a:hover { background: var(--cream); color: var(--ink); }
 .closing-product { position: absolute; z-index: 1; width: min(42vw, 600px); right: 7%; bottom: -23%; transform: rotate(11deg); filter: drop-shadow(20px 20px 0 rgba(255,184,0,.35)); }
 .closing::before { content: ""; position: absolute; right: -5%; top: 8%; width: 52vw; aspect-ratio: 1; border-radius: 50%; background: var(--hot-pink); }
-.site-footer { padding: 1.2rem var(--page-pad); background: var(--orange); display: grid; grid-template-columns: 1fr auto auto; gap: 2rem; align-items: center; border-bottom: 3px solid var(--ink); }
+.site-footer { padding: 1.2rem var(--page-pad); background: var(--orange); display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-bottom: 3px solid var(--ink); }
 .site-footer p { margin: 0; font-size: .8rem; font-weight: 700; }
 .brand-footer { width: 112px; }
 .footer-signoff { display: grid; gap: .35rem; text-align: right; }
@@ -404,10 +404,10 @@ button { color: inherit; font: inherit; }
   .store-grid { grid-template-columns: 1fr; }
   .store-card { min-height: 210px; }
   .newsletter { min-height: 880px; background-image: radial-gradient(circle at -5% 12%, #ffdc72 0 11%, transparent 11.3%), radial-gradient(circle at 52% 0%, #ffdc72 0 15%, transparent 15.3%), radial-gradient(circle at 105% 18%, #ffdc72 0 13%, transparent 13.3%); }
-  .newsletter-orbit { top: 5.4rem; width: calc(100% - 1.25rem); min-height: 800px; border-radius: 50% 50% 0 0 / 24% 24% 0 0; }
+  .newsletter-orbit { top: 5.4rem; bottom: 0; width: 100%; min-height: 800px; border-radius: 50% 50% 0 0 / 24% 24% 0 0; }
   .newsletter-arc-title { top: 1.2rem; width: 128%; }
-  .newsletter-arc-heading { font-size: 104px; }
-  .newsletter-arc-copy { font-size: 25px; letter-spacing: .35px; }
+  .newsletter-arc-heading { font-size: 100px; }
+  .newsletter-arc-copy { font-size: 19px; letter-spacing: .35px; }
   .newsletter-product { right: auto; bottom: 5.4rem; left: 50%; width: 148%; }
   .newsletter-form { bottom: 1.4rem; width: calc(100% - 2rem); min-height: 58px; }
   .newsletter-form input { width: 100%; padding: 0 .85rem; font-size: .86rem; }
