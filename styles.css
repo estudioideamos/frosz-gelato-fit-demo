@@ -61,10 +61,10 @@ button { color: inherit; font: inherit; }
 .marquee-track { display: flex; width: max-content; padding: .85rem 0; gap: 1.5rem; align-items: center; font: 400 clamp(1.5rem, 3vw, 3.2rem)/1 var(--display); white-space: nowrap; animation: marquee 22s linear infinite; }
 .marquee-track i { color: var(--orange); font-style: normal; }
 
-.manifesto { height: auto; min-height: 0; padding: clamp(9rem, 11vw, 11rem) var(--page-pad) clamp(4rem, 6vw, 6rem); display: grid; grid-template-rows: auto auto auto; gap: clamp(1.35rem, 2vw, 2.1rem); background: var(--cream); border-bottom: 3px solid var(--ink); overflow: visible; scroll-margin-top: 1rem; }
+.manifesto { height: auto; min-height: 0; padding: clamp(9rem, 11vw, 11rem) var(--page-pad) clamp(2rem, 2.8vw, 3rem); display: grid; grid-template-rows: auto auto auto; gap: clamp(.75rem, 1.1vw, 1.1rem); background: var(--cream); border-bottom: 3px solid var(--ink); overflow: visible; scroll-margin-top: 1rem; }
 .eyebrow { margin: 0 0 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; }
 .social-heading h2, .stores-heading h2, .closing h2 { margin: 0; font: 400 clamp(3.1rem, 7vw, 7.6rem)/.86 var(--display); letter-spacing: -.06em; }
-.about-title { width: 100%; margin: 0; color: #f41624; font: 400 clamp(4.8rem, 9.4vw, 9.8rem)/.78 var(--condensed); letter-spacing: .002em; white-space: nowrap; display: flex; justify-content: flex-start; align-items: baseline; gap: clamp(1.1rem, 1.8vw, 2rem); }
+.about-title { width: 100%; margin: 0; padding-inline: clamp(.35rem, .6vw, .6rem); color: #f41624; font: 400 clamp(4.8rem, 9.25vw, 9.65rem)/.78 var(--condensed); letter-spacing: .001em; white-space: nowrap; display: flex; justify-content: flex-start; align-items: baseline; gap: clamp(1rem, 1.3vw, 1.4rem); }
 .text-link { display: inline-flex; gap: 1rem; align-items: center; border-bottom: 3px solid var(--ink); padding: 0 0 .5rem; font-weight: 800; text-transform: uppercase; }
 .about-stage { position: relative; width: 100%; min-height: 0; aspect-ratio: 2.9 / 1; overflow: hidden; border-radius: clamp(30px, 4.2vw, 64px); background: #ef4c72; }
 .about-image { width: 100%; height: 100%; object-fit: cover; object-position: center 68%; transform: scale(1.16); transition: opacity .28s ease, transform .5s cubic-bezier(.22,1,.36,1); }
@@ -73,12 +73,12 @@ button { color: inherit; font: inherit; }
 .about-arrow:hover, .about-arrow:focus-visible { background: rgba(17,17,17,.24); transform: translateY(-50%) scale(1.1); }
 .about-arrow-prev { left: 2rem; }
 .about-arrow-next { right: 2rem; }
-.about-footer { position: relative; min-height: 154px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: clamp(2rem, 4vw, 5rem); }
-.about-footer h3 { margin: 0; color: #f41624; font: 400 clamp(3.8rem, 6.15vw, 7rem)/.74 var(--condensed); letter-spacing: -.012em; }
-.about-sticker { position: absolute; z-index: 2; left: 22%; top: 6%; width: clamp(88px, 10vw, 138px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #dec8e6; color: #51434c; font-size: clamp(2rem, 4vw, 4rem); transform: rotate(-7deg); }
+.about-footer { position: relative; min-height: 166px; margin-top: .45rem; display: grid; grid-template-columns: 1.1fr .9fr; align-items: start; gap: clamp(1.2rem, 2vw, 2.5rem); }
+.about-footer h3 { width: 106.4%; margin: 0; color: #f41624; font: 400 clamp(4.2rem, 7vw, 8rem)/.75 var(--condensed); letter-spacing: 0; transform: scaleX(.94); transform-origin: left top; }
+.about-sticker { position: absolute; z-index: 2; left: 24%; top: 1%; width: clamp(88px, 10vw, 138px); aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #dec8e6; color: #51434c; font-size: clamp(2rem, 4vw, 4rem); transform: rotate(-7deg); }
 .about-sticker::before { content: "✦"; position: absolute; left: 12%; top: 27%; color: var(--cream); font-size: .44em; }
-.about-story { position: relative; min-height: 112px; margin: .5rem 0; padding: 1.3rem 4.6rem 1.3rem 1.8rem; border-radius: 999px; background: #f3b4c6; display: flex; align-items: center; }
-.about-story p { margin: 0; color: #f41624; font: 400 clamp(.95rem, 1.45vw, 1.55rem)/1.03 var(--condensed); letter-spacing: .01em; text-transform: uppercase; }
+.about-story { position: relative; min-height: 108px; margin: 1.1rem 0 0; padding: 1.2rem 4.6rem 1.2rem 1.8rem; border-radius: 999px; background: #f3b4c6; display: flex; align-items: center; }
+.about-story p { margin: 0; color: #f41624; font: 400 clamp(.9rem, 1.25vw, 1.35rem)/1.04 var(--condensed); letter-spacing: .008em; text-transform: uppercase; }
 .about-story > span { position: absolute; right: .8rem; bottom: -.8rem; width: 54px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #493f38; color: var(--cream); font-size: 1.6rem; }
 
 .campaign-break { position: relative; min-height: min(76vw, 880px); overflow: hidden; border-bottom: 3px solid var(--ink); background: var(--pink); }
@@ -191,8 +191,8 @@ button { color: inherit; font: inherit; }
   .spark-one { left: 3%; top: 25%; }
   .spark-two { right: 3%; top: 25%; }
   .manifesto { padding-top: 9rem; }
-  .about-footer { grid-template-columns: 1.12fr .88fr; gap: 2rem; }
-  .about-footer h3 { font-size: clamp(3.5rem, 6.1vw, 5rem); }
+  .about-footer { grid-template-columns: 1.05fr .95fr; gap: 1.3rem; }
+  .about-footer h3 { font-size: clamp(3.8rem, 7vw, 5.7rem); }
   .about-sticker { left: 18%; }
   .flavor-layout { grid-template-columns: minmax(0, 1fr) 220px; grid-template-rows: minmax(0, 1fr) 84px; grid-template-areas: "stage detail" "tabs tabs"; }
   .flavor-tabs { padding: .4rem; flex-direction: row; justify-content: center; gap: .6rem; }
