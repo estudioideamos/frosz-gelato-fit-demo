@@ -162,6 +162,163 @@ reduceMotion.addEventListener?.("change", scheduleAutoplay);
 positionFlavorWheel();
 scheduleAutoplay();
 
+const showcaseFlavors = [
+  { key: "chocolate", name: "CHOCOLATE", tagline: "UN CLASICO QUE ENTRENA TODOS LOS DIAS", description: "CACAO INTENSO, TEXTURA CREMOSA Y TODO EL PLACER DE UNA CUCHARADA QUE VA AL FRENTE.", top: "CHOCO", bottom: "LATE", note: "PROFUNDO, CREMOSO Y CON FINAL BIEN CHOCOLATOSO.", ingredient: "showcase-chocolate.jpg", pot: "flavor-chocolate.png", bg: "#f4b5c7", ink: "#f41624" },
+  { key: "banana", name: "BANANA", tagline: "DULCE, SUAVE Y CON ENERGIA DE TARDE SOLEADA", description: "BANANA MADURA, TEXTURA SEDOSA Y UN PERFIL DULCE QUE SE SIENTE LIVIANO HASTA LA ULTIMA CUCHARADA.", top: "BANA", bottom: "NA", note: "CREMOSO, DORADO Y LISTO PARA LEVANTARTE EL DIA.", ingredient: "showcase-banana.jpg", pot: "flavor-banana.png", bg: "#f6d957", ink: "#ef4c35" },
+  { key: "menta", name: "MENTA GRANIZADA", tagline: "FRESCURA CON UN CRUNCH QUE NO NEGOCIA", description: "MENTA LIMPIA, CHOCOLATE INTENSO Y UNA TEXTURA QUE ARRANCA FRESCA Y TERMINA BIEN ARRIBA.", top: "MENTA", bottom: "CRUNCH", note: "FRESCA, FILOSA Y CON CHOCOLATE EN CADA VUELTA.", ingredient: "showcase-menta.jpg", pot: "flavor-menta.png", bg: "#a9d8c1", ink: "#27223b" },
+  { key: "frutos", name: "FRUTOS DEL BOSQUE", tagline: "UN MOOD FRUTAL CON PULSO PROPIO", description: "MORAS, FRAMBUESAS Y ARANDANOS EN UNA MEZCLA VIBRANTE, CREMOSA Y CON EL PUNTO JUSTO DE ACIDEZ.", top: "BERRY", bottom: "MOOD", note: "FRUTAL, INTENSO Y CON UNA ACIDEZ QUE DESPIERTA.", ingredient: "showcase-frutos.jpg", pot: "flavor-frutos.png", bg: "#d9bfdf", ink: "#8c245f" },
+  { key: "cafe", name: "CAFE MOKA", tagline: "LA PAUSA QUE TE VUELVE A PONER EN MOVIMIENTO", description: "CAFE TOSTADO, CACAO Y CREMOSIDAD EN UNA COMBINACION PROFUNDA QUE RINDE A CUALQUIER HORA.", top: "CAFE", bottom: "MOKA", note: "AROMA TOSTADO, CACAO Y UNA PAUSA QUE RINDE.", ingredient: "showcase-cafe.jpg", pot: "flavor-cafe.png", bg: "#d7b087", ink: "#5a2e20" },
+  { key: "mani", name: "CREMA DE MANI", tagline: "POTENCIA CREMOSA EN MODO CUCHARA", description: "MANI TOSTADO, CUERPO INTENSO Y UNA CREMOSIDAD QUE CONVIERTE CADA BOCADO EN PLAN FAVORITO.", top: "MANI", bottom: "POWER", note: "TOSTADO, POTENTE Y PELIGROSAMENTE CUCHARABLE.", ingredient: "showcase-mani.jpg", pot: "flavor-mani.png", bg: "#f3ad4b", ink: "#a92832" },
+  { key: "coco", name: "COCO", tagline: "UN VIAJE TROPICAL SIN SALIR DE TU RITMO", description: "COCO FRESCO, TEXTURA LIVIANA Y UNA CREMOSIDAD SUAVE PARA BAJAR UN CAMBIO SIN BAJAR EL SABOR.", top: "COCO", bottom: "FRESH", note: "LIVIANO, TROPICAL Y MUY DIFICIL DE SOLTAR.", ingredient: "showcase-coco.jpg", pot: "flavor-coco.png", bg: "#a8d9e6", ink: "#175b73" },
+  { key: "ddl", name: "DULCE DE LECHE", tagline: "EL CLASICO ARGENTINO CAMBIO DE FRECUENCIA", description: "DULCE DE LECHE PROFUNDO, TEXTURA ARTESANAL Y ESE SABOR DE SIEMPRE LLEVADO A SU VERSION FIT.", top: "DULCE", bottom: "ARGENTO", note: "BIEN NUESTRO, BIEN CREMOSO Y SIN DAR VUELTAS.", ingredient: "showcase-ddl.jpg", pot: "flavor-ddl.png", bg: "#dfb17f", ink: "#783b21" },
+  { key: "frutilla", name: "FRUTILLA", tagline: "COLOR ARRIBA, CUCHARA LISTA", description: "FRUTILLAS MADURAS, PERFIL FRESCO Y UNA TEXTURA ROSA, CREMOSA Y ALEGRE DESDE EL PRIMER BOCADO.", top: "FRUTI", bottom: "LLA", note: "FRUTAL, CREMOSA Y SIEMPRE DE BUEN HUMOR.", ingredient: "showcase-frutilla.jpg", pot: "flavor-frutilla.png", bg: "#f4b5c7", ink: "#f41624" }
+];
+
+showcaseFlavors.forEach(({ ingredient, pot }) => {
+  [ingredient, pot].forEach((asset) => {
+    const preload = new Image();
+    preload.src = `./public/assets/web/${asset}`;
+  });
+});
+
+const showcaseSection = document.querySelector(".product-showcase");
+const showcaseFlavorName = document.querySelector("#showcase-flavor-name");
+const showcaseTagline = document.querySelector("#showcase-tagline");
+const showcaseDescription = document.querySelector("#showcase-description");
+const showcaseWordTop = document.querySelector("#showcase-word-top");
+const showcaseWordBottom = document.querySelector("#showcase-word-bottom");
+const showcaseIngredient = document.querySelector("#showcase-ingredient");
+const showcasePot = document.querySelector("#showcase-pot");
+const showcasePeekPrev = document.querySelector("#showcase-peek-prev");
+const showcasePeekNext = document.querySelector("#showcase-peek-next");
+const showcaseNote = document.querySelector("#showcase-note");
+const showcaseIndex = document.querySelector("#showcase-index");
+const showcaseDots = document.querySelector("#showcase-dots");
+const showcasePrev = document.querySelector("#showcase-prev");
+const showcaseNext = document.querySelector("#showcase-next");
+let showcaseActiveIndex = 0;
+let showcaseTimer;
+let showcaseTransitionTimer;
+let showcaseWaveTimer;
+let showcaseVisible = false;
+let showcaseInteractionPaused = false;
+let showcaseLocked = false;
+let showcasePointerStart = 0;
+
+const wrapShowcaseIndex = (index) => (index + showcaseFlavors.length) % showcaseFlavors.length;
+
+showcaseFlavors.forEach((flavor, index) => {
+  const dot = document.createElement("button");
+  dot.className = `showcase-dot${index === 0 ? " is-active" : ""}`;
+  dot.type = "button";
+  dot.setAttribute("role", "listitem");
+  dot.setAttribute("aria-label", `Ver sabor ${flavor.name}`);
+  dot.setAttribute("aria-pressed", String(index === 0));
+  dot.addEventListener("click", () => {
+    const directDistance = index - showcaseActiveIndex;
+    const direction = Math.abs(directDistance) > showcaseFlavors.length / 2 ? -Math.sign(directDistance) : Math.sign(directDistance);
+    activateShowcase(index, { direction: direction || 1, manual: true });
+  });
+  showcaseDots.append(dot);
+});
+
+const renderShowcase = (index, { commitBackground = true } = {}) => {
+  const flavor = showcaseFlavors[index];
+  const previous = showcaseFlavors[wrapShowcaseIndex(index - 1)];
+  const next = showcaseFlavors[wrapShowcaseIndex(index + 1)];
+  showcaseSection.dataset.showcaseFlavor = flavor.key;
+  if (commitBackground) showcaseSection.style.setProperty("--showcase-bg", flavor.bg);
+  showcaseSection.style.setProperty("--showcase-ink", flavor.ink);
+  showcaseFlavorName.textContent = flavor.name;
+  showcaseTagline.textContent = flavor.tagline;
+  showcaseDescription.textContent = flavor.description;
+  showcaseWordTop.textContent = flavor.top;
+  showcaseWordBottom.textContent = flavor.bottom;
+  showcaseIngredient.src = `./public/assets/web/${flavor.ingredient}`;
+  showcaseIngredient.alt = `Ingredientes del sabor ${flavor.name}`;
+  showcasePot.src = `./public/assets/web/${flavor.pot}`;
+  showcasePot.alt = `Pote Frosz sabor ${flavor.name}`;
+  showcasePeekPrev.src = `./public/assets/web/${previous.ingredient}`;
+  showcasePeekNext.src = `./public/assets/web/${next.ingredient}`;
+  showcaseNote.textContent = flavor.note;
+  showcaseIndex.textContent = String(index + 1).padStart(2, "0");
+  [...showcaseDots.children].forEach((dot, dotIndex) => {
+    const active = dotIndex === index;
+    dot.classList.toggle("is-active", active);
+    dot.setAttribute("aria-pressed", String(active));
+  });
+};
+
+const stopShowcaseAutoplay = () => window.clearTimeout(showcaseTimer);
+
+const scheduleShowcaseAutoplay = () => {
+  stopShowcaseAutoplay();
+  if (!showcaseVisible || showcaseInteractionPaused || showcaseLocked || reduceMotion.matches || document.hidden) return;
+  showcaseTimer = window.setTimeout(() => activateShowcase(showcaseActiveIndex + 1), 5200);
+};
+
+function activateShowcase(requestedIndex, { direction = 1, manual = false } = {}) {
+  const nextIndex = wrapShowcaseIndex(requestedIndex);
+  if (showcaseLocked || nextIndex === showcaseActiveIndex) {
+    if (manual) scheduleShowcaseAutoplay();
+    return;
+  }
+
+  const nextFlavor = showcaseFlavors[nextIndex];
+  showcaseLocked = true;
+  stopShowcaseAutoplay();
+  showcaseSection.style.setProperty("--showcase-next-bg", nextFlavor.bg);
+  showcaseSection.classList.remove("is-entering", "is-wave-forward", "is-wave-backward", "is-backward");
+  if (direction < 0) showcaseSection.classList.add("is-backward");
+  void showcaseSection.offsetWidth;
+  showcaseSection.classList.add("is-leaving", direction < 0 ? "is-wave-backward" : "is-wave-forward");
+
+  window.clearTimeout(showcaseTransitionTimer);
+  showcaseTransitionTimer = window.setTimeout(() => {
+    showcaseActiveIndex = nextIndex;
+    renderShowcase(showcaseActiveIndex, { commitBackground: false });
+    showcaseSection.classList.remove("is-leaving");
+    showcaseSection.classList.add("is-entering");
+  }, 500);
+
+  window.clearTimeout(showcaseWaveTimer);
+  showcaseWaveTimer = window.setTimeout(() => {
+    showcaseSection.style.setProperty("--showcase-bg", nextFlavor.bg);
+    showcaseSection.classList.remove("is-entering", "is-wave-forward", "is-wave-backward", "is-backward");
+    showcaseLocked = false;
+    scheduleShowcaseAutoplay();
+  }, 1280);
+}
+
+showcasePrev.addEventListener("click", () => activateShowcase(showcaseActiveIndex - 1, { direction: -1, manual: true }));
+showcaseNext.addEventListener("click", () => activateShowcase(showcaseActiveIndex + 1, { direction: 1, manual: true }));
+
+[showcasePrev, showcaseNext, showcaseDots].forEach((element) => {
+  element.addEventListener("pointerenter", () => { showcaseInteractionPaused = true; stopShowcaseAutoplay(); });
+  element.addEventListener("pointerleave", () => { showcaseInteractionPaused = false; scheduleShowcaseAutoplay(); });
+  element.addEventListener("focusin", () => { showcaseInteractionPaused = true; stopShowcaseAutoplay(); });
+  element.addEventListener("focusout", () => { showcaseInteractionPaused = false; scheduleShowcaseAutoplay(); });
+});
+
+showcaseSection.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") activateShowcase(showcaseActiveIndex - 1, { direction: -1, manual: true });
+  if (event.key === "ArrowRight") activateShowcase(showcaseActiveIndex + 1, { direction: 1, manual: true });
+});
+showcaseSection.addEventListener("pointerdown", (event) => { showcasePointerStart = event.clientX; });
+showcaseSection.addEventListener("pointerup", (event) => {
+  const delta = event.clientX - showcasePointerStart;
+  if (Math.abs(delta) < 55) return;
+  activateShowcase(showcaseActiveIndex + (delta < 0 ? 1 : -1), { direction: delta < 0 ? 1 : -1, manual: true });
+});
+
+const showcaseObserver = new IntersectionObserver(([entry]) => {
+  showcaseVisible = entry.isIntersecting;
+  scheduleShowcaseAutoplay();
+}, { threshold: .28 });
+showcaseObserver.observe(showcaseSection);
+document.addEventListener("visibilitychange", scheduleShowcaseAutoplay);
+reduceMotion.addEventListener?.("change", scheduleShowcaseAutoplay);
+
 const aboutSlides = [
   { image: "about-frosz.png", alt: "Pote Frosz de chocolate entre elementos de heladería artesanal y entrenamiento" },
   { image: "campaign-hero.png", alt: "Pote Frosz en una campaña visual rosa y amarilla" }

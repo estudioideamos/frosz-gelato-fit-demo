@@ -22,14 +22,14 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260718-footer18" />
-    <script src="./script.js?v=20260718-footer18" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-flavors19" />
+    <script src="./script.js?v=20260718-flavors19" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="site-header" aria-label="Navegación principal">
-      <a class="brand" href="#sabores" aria-label="Frosz, volver al inicio">
+      <a class="brand" href="#inicio" aria-label="Frosz, volver al inicio">
         <img src="./public/assets/web/frosz-wordmark-black.png" alt="Frosz" />
       </a>
       <nav class="desktop-nav" aria-label="Secciones">
@@ -50,7 +50,7 @@
     </header>
 
     <main id="contenido">
-      <section class="flavor-lab flavor-hero is-bursting" id="sabores" aria-labelledby="flavor-title" data-flavor="chocolate">
+      <section class="flavor-lab flavor-hero is-bursting" id="inicio" aria-labelledby="flavor-title" data-flavor="chocolate">
         <span class="flavor-color-wave" aria-hidden="true"></span>
         <div class="flavor-layout">
           <div class="flavor-masthead">
@@ -125,6 +125,48 @@
             <p>Nuestra familia unio años de tradicion heladera con el amor por entrenar y comer mejor, para crear un gelato proteico, natural y artesanal que acerca el placer a tu ritmo.</p>
             <span aria-hidden="true">✦</span>
           </div>
+        </div>
+      </section>
+
+      <section class="product-showcase" id="sabores" aria-labelledby="showcase-title" data-showcase-flavor="chocolate" tabindex="0">
+        <h2 class="sr-only" id="showcase-title">Sabores Frosz</h2>
+        <span class="showcase-color-wave" aria-hidden="true"></span>
+        <div class="showcase-content">
+          <header class="showcase-intro">
+            <p class="showcase-flavor-name" id="showcase-flavor-name">CHOCOLATE</p>
+            <p class="showcase-tagline" id="showcase-tagline">UN CLASICO QUE ENTRENA TODOS LOS DIAS</p>
+            <p class="showcase-description" id="showcase-description">CACAO INTENSO, TEXTURA CREMOSA Y TODO EL PLACER DE UNA CUCHARADA QUE VA AL FRENTE.</p>
+          </header>
+
+          <div class="showcase-words" aria-hidden="true">
+            <span id="showcase-word-top">CHOCO</span>
+            <span id="showcase-word-bottom">LATE</span>
+          </div>
+
+          <div class="showcase-rail" aria-live="polite">
+            <figure class="showcase-peek showcase-peek-prev" aria-hidden="true">
+              <img id="showcase-peek-prev" src="./public/assets/web/showcase-frutilla.jpg" alt="" />
+            </figure>
+
+            <figure class="showcase-scene">
+              <img class="showcase-ingredient" id="showcase-ingredient" src="./public/assets/web/showcase-chocolate.jpg" alt="Chocolate cremoso" />
+              <img class="showcase-pot" id="showcase-pot" src="./public/assets/web/flavor-chocolate.png" alt="Pote Frosz sabor Chocolate" />
+            </figure>
+
+            <figure class="showcase-peek showcase-peek-next" aria-hidden="true">
+              <img id="showcase-peek-next" src="./public/assets/web/showcase-banana.jpg" alt="" />
+            </figure>
+          </div>
+
+          <p class="showcase-note" id="showcase-note">PROFUNDO, CREMOSO Y CON FINAL BIEN CHOCOLATOSO.</p>
+
+          <div class="showcase-controls" aria-label="Navegar sabores">
+            <button class="showcase-arrow" id="showcase-prev" type="button" aria-label="Sabor anterior">&#8592;</button>
+            <p><span id="showcase-index">01</span> / 09</p>
+            <button class="showcase-arrow" id="showcase-next" type="button" aria-label="Sabor siguiente">&#8594;</button>
+          </div>
+
+          <div class="showcase-dots" id="showcase-dots" role="list" aria-label="Elegir sabor"></div>
         </div>
       </section>
 
@@ -210,9 +252,9 @@
           <h2 class="sr-only" id="newsletter-title">LA DATA MAS FRESCA</h2>
           <svg class="newsletter-arc-title" viewBox="0 0 1200 350" aria-hidden="true">
             <defs>
-              <path id="newsletter-title-path" d="M 145 289 Q 600 -39 1055 289" />
-              <path id="newsletter-copy-path-one" d="M 330 236 Q 600 132 870 236" />
-              <path id="newsletter-copy-path-two" d="M 345 275 Q 600 182 855 275" />
+              <path id="newsletter-title-path" d="M 145 302 Q 600 -112 1055 302" />
+              <path id="newsletter-copy-path-one" d="M 292 247 Q 600 36 908 247" />
+              <path id="newsletter-copy-path-two" d="M 324 292 Q 600 105 876 292" />
             </defs>
             <text class="newsletter-arc-heading">
               <textPath href="#newsletter-title-path" startOffset="50%" text-anchor="middle">LA DATA MAS FRESCA</textPath>
@@ -243,7 +285,7 @@
     </main>
 
     <footer class="site-footer">
-      <a class="brand brand-footer" href="#sabores" aria-label="Frosz, volver al inicio">
+      <a class="brand brand-footer" href="#inicio" aria-label="Frosz, volver al inicio">
         <img src="./public/assets/web/frosz-wordmark-black.png" alt="Frosz" />
       </a>
       <div class="footer-signoff">
