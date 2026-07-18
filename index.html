@@ -22,14 +22,14 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-hero3" />
+    <script src="./script.js?v=20260718-hero3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
     <header class="site-header" aria-label="Navegación principal">
-      <a class="brand" href="#inicio" aria-label="Frosz, volver al inicio">
+      <a class="brand" href="#sabores" aria-label="Frosz, volver al inicio">
         <img src="./public/assets/web/frosz-wordmark-black.png" alt="Frosz" />
       </a>
       <nav class="desktop-nav" aria-label="Secciones">
@@ -51,27 +51,42 @@
     </header>
 
     <main id="contenido">
-      <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-split hero-left" aria-hidden="true"></div>
-        <div class="hero-split hero-right" aria-hidden="true"></div>
-        <p class="hero-kicker">Gelato fit · 100% artesanal</p>
-        <h1 id="hero-title" class="hero-title">
-          <span>HELADO</span>
-          <span class="hero-x">×</span>
-          <span>PROTEINA</span>
-        </h1>
-        <div class="hero-product-wrap" aria-hidden="true">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <img class="hero-product" src="./public/assets/web/HELADO.png" alt="" />
+      <section class="flavor-lab flavor-hero" id="sabores" aria-labelledby="flavor-title" data-flavor="chocolate">
+        <div class="flavor-layout">
+          <div class="flavor-masthead">
+            <h1 id="flavor-title"><span>FROSZ</span><b aria-hidden="true">×</b><span>GELATO FIT</span></h1>
+            <div class="flavor-meta">
+              <p>AHORA SUENA <strong><span id="flavor-index">01</span> / 09</strong></p>
+              <h2 id="flavor-name">CHOCOLATE</h2>
+              <p id="flavor-description">Intenso, cremoso y listo para cambiarte el dia.</p>
+            </div>
+          </div>
+
+          <div class="flavor-stage" aria-live="polite">
+            <div class="flavor-image-wrap">
+              <img id="flavor-image" src="./public/assets/web/flavor-chocolate.png" alt="Pote Frosz sabor Chocolate" />
+            </div>
+          </div>
+
+          <div class="flavor-arc" aria-hidden="true"></div>
+          <div class="flavor-tabs" role="list" aria-label="Seleccionar sabor">
+            <button class="flavor-tab is-active" type="button" data-key="chocolate" aria-label="Chocolate" aria-pressed="true"><img src="./public/assets/web/flavor-chocolate.png" alt="" /><span>Chocolate</span></button>
+            <button class="flavor-tab" type="button" data-key="banana" aria-label="Banana" aria-pressed="false"><img src="./public/assets/web/flavor-banana.png" alt="" /><span>Banana</span></button>
+            <button class="flavor-tab" type="button" data-key="menta" aria-label="Menta granizada" aria-pressed="false"><img src="./public/assets/web/flavor-menta.png" alt="" /><span>Menta</span></button>
+            <button class="flavor-tab" type="button" data-key="frutos" aria-label="Frutos del bosque" aria-pressed="false"><img src="./public/assets/web/flavor-frutos.png" alt="" /><span>Frutos</span></button>
+            <button class="flavor-tab" type="button" data-key="cafe" aria-label="Cafe moka" aria-pressed="false"><img src="./public/assets/web/flavor-cafe.png" alt="" /><span>Cafe</span></button>
+            <button class="flavor-tab" type="button" data-key="mani" aria-label="Crema de mani" aria-pressed="false"><img src="./public/assets/web/flavor-mani.png" alt="" /><span>Mani</span></button>
+            <button class="flavor-tab" type="button" data-key="coco" aria-label="Coco" aria-pressed="false"><img src="./public/assets/web/flavor-coco.png" alt="" /><span>Coco</span></button>
+            <button class="flavor-tab" type="button" data-key="ddl" aria-label="Dulce de leche" aria-pressed="false"><img src="./public/assets/web/flavor-ddl.png" alt="" /><span>Dulce</span></button>
+            <button class="flavor-tab" type="button" data-key="frutilla" aria-label="Frutilla" aria-pressed="false"><img src="./public/assets/web/flavor-frutilla.png" alt="" /><span>Frutilla</span></button>
+          </div>
+          <p class="flavor-hint">TOCA UN POTE<br />Y CAMBIA LA FRECUENCIA <span aria-hidden="true">↗</span></p>
+          <div class="flavor-controls" aria-label="Controles del carrusel de sabores">
+            <button id="flavor-prev" type="button" aria-label="Sabor anterior">←</button>
+            <button id="flavor-toggle" type="button" aria-label="Pausar autoplay" aria-pressed="false">PAUSA</button>
+            <button id="flavor-next" type="button" aria-label="Sabor siguiente">→</button>
+          </div>
         </div>
-        <p class="hero-note">Bajo en calorias.<br />Alto en ganas.</p>
-        <a class="round-link" href="#sabores" aria-label="Descubrir sabores">
-          <span>Descubrí<br />los sabores</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-        <span class="spark spark-one" aria-hidden="true">✦</span>
-        <span class="spark spark-two" aria-hidden="true">✦</span>
       </section>
 
       <div class="marquee" aria-label="Características de Frosz">
@@ -108,44 +123,6 @@
         <div class="campaign-copy reveal">
           <p class="eyebrow">Tu postre, tu ritmo</p>
           <h2 id="campaign-title">ENTRENA.<br />DISFRUTA.<br />REPETI.</h2>
-        </div>
-      </section>
-
-      <section class="flavor-lab" id="sabores" aria-labelledby="flavor-title" data-flavor="chocolate">
-        <div class="flavor-layout">
-          <div class="flavor-tabs" role="list" aria-label="Seleccionar sabor">
-            <button class="flavor-tab is-active" type="button" data-key="chocolate" aria-label="Chocolate" aria-pressed="true"><img src="./public/assets/web/flavor-chocolate.png" alt="" /><span>Chocolate</span></button>
-            <button class="flavor-tab" type="button" data-key="banana" aria-label="Banana" aria-pressed="false"><img src="./public/assets/web/flavor-banana.png" alt="" /><span>Banana</span></button>
-            <button class="flavor-tab" type="button" data-key="menta" aria-label="Menta granizada" aria-pressed="false"><img src="./public/assets/web/flavor-menta.png" alt="" /><span>Menta</span></button>
-            <button class="flavor-tab" type="button" data-key="frutos" aria-label="Frutos del bosque" aria-pressed="false"><img src="./public/assets/web/flavor-frutos.png" alt="" /><span>Frutos</span></button>
-            <button class="flavor-tab" type="button" data-key="cafe" aria-label="Café moka" aria-pressed="false"><img src="./public/assets/web/flavor-cafe.png" alt="" /><span>Café</span></button>
-            <button class="flavor-tab" type="button" data-key="mani" aria-label="Crema de maní" aria-pressed="false"><img src="./public/assets/web/flavor-mani.png" alt="" /><span>Maní</span></button>
-            <button class="flavor-tab" type="button" data-key="coco" aria-label="Coco" aria-pressed="false"><img src="./public/assets/web/flavor-coco.png" alt="" /><span>Coco</span></button>
-            <button class="flavor-tab" type="button" data-key="ddl" aria-label="Dulce de leche" aria-pressed="false"><img src="./public/assets/web/flavor-ddl.png" alt="" /><span>Dulce</span></button>
-            <button class="flavor-tab" type="button" data-key="frutilla" aria-label="Frutilla" aria-pressed="false"><img src="./public/assets/web/flavor-frutilla.png" alt="" /><span>Frutilla</span></button>
-          </div>
-
-          <div class="flavor-stage" aria-live="polite">
-            <p class="flavor-word flavor-word-back" id="flavor-word-back" aria-hidden="true">CHOCO</p>
-            <div class="flavor-image-wrap">
-              <img id="flavor-image" src="./public/assets/web/flavor-chocolate.png" alt="Pote Frosz sabor Chocolate" />
-            </div>
-            <p class="flavor-word flavor-word-front" id="flavor-word-front" aria-hidden="true">LATE</p>
-          </div>
-
-          <div class="flavor-detail">
-            <div>
-              <p class="eyebrow">Elegi tu mood</p>
-              <h2 id="flavor-title">NUEVE<br />SABORES.</h2>
-            </div>
-            <div class="flavor-now">
-              <p class="flavor-counter"><span id="flavor-index">01</span> / 09</p>
-              <p>Ahora suena:</p>
-              <h3 id="flavor-name">Chocolate</h3>
-              <p id="flavor-description">Intenso, cremoso y listo para cambiarte el día.</p>
-            </div>
-            <p class="flavor-hint">Toca un pote<br />y cambia la frecuencia <span aria-hidden="true">↙</span></p>
-          </div>
         </div>
       </section>
 
@@ -233,7 +210,7 @@
     </main>
 
     <footer class="site-footer">
-      <a class="brand brand-footer" href="#inicio" aria-label="Frosz, volver al inicio">
+      <a class="brand brand-footer" href="#sabores" aria-label="Frosz, volver al inicio">
         <img src="./public/assets/web/frosz-wordmark-black.png" alt="Frosz" />
       </a>
       <p>Gelato fit 100% artesanal.</p>

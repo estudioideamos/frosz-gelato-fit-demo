@@ -16,39 +16,118 @@ const flavorImage = document.querySelector("#flavor-image");
 const flavorName = document.querySelector("#flavor-name");
 const flavorDescription = document.querySelector("#flavor-description");
 const flavorIndex = document.querySelector("#flavor-index");
-const flavorWordBack = document.querySelector("#flavor-word-back");
-const flavorWordFront = document.querySelector("#flavor-word-front");
+const flavorButtons = [...document.querySelectorAll(".flavor-tab")];
+const flavorTabs = document.querySelector(".flavor-tabs");
+const flavorControls = document.querySelector(".flavor-controls");
+const flavorPrev = document.querySelector("#flavor-prev");
+const flavorNext = document.querySelector("#flavor-next");
+const flavorToggle = document.querySelector("#flavor-toggle");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let activeFlavorIndex = 0;
+let flavorTimer;
+let flavorTransition;
+let userPaused = false;
+let interactionPaused = false;
 
-document.querySelectorAll(".flavor-tab").forEach((button) => {
-  button.addEventListener("click", () => {
-    const flavor = flavors[button.dataset.key];
-    if (!flavor || button.classList.contains("is-active")) return;
+const circularDistance = (index, active) => {
+  let distance = index - active;
+  const half = flavorButtons.length / 2;
+  if (distance > half) distance -= flavorButtons.length;
+  if (distance < -half) distance += flavorButtons.length;
+  return distance;
+};
 
-    const previousButton = document.querySelector(".flavor-tab.is-active");
-    previousButton?.classList.remove("is-active");
-    previousButton?.setAttribute("aria-pressed", "false");
-    button.classList.add("is-active");
-    button.setAttribute("aria-pressed", "true");
-    flavorSection.classList.remove("is-entering");
-    flavorSection.classList.add("is-switching");
+const positionFlavorWheel = () => {
+  flavorButtons.forEach((button, index) => {
+    button.dataset.slot = String(circularDistance(index, activeFlavorIndex));
+  });
+};
 
-    window.setTimeout(() => {
-      flavorSection.style.setProperty("--flavor-bg", flavor.bg);
-      flavorSection.style.setProperty("--flavor-accent", flavor.accent);
-      flavorSection.dataset.flavor = button.dataset.key;
-      flavorImage.src = `./public/assets/web/${flavor.image}`;
-      flavorImage.alt = `Pote Frosz sabor ${flavor.name}`;
-      flavorName.textContent = flavor.name;
-      flavorDescription.textContent = flavor.description;
-      flavorIndex.textContent = flavor.index;
-      flavorWordBack.textContent = flavor.back;
-      flavorWordFront.textContent = flavor.front;
-      flavorSection.classList.remove("is-switching");
-      flavorSection.classList.add("is-entering");
-      window.setTimeout(() => flavorSection.classList.remove("is-entering"), 760);
-    }, 300);
+const stopAutoplay = () => window.clearTimeout(flavorTimer);
+
+const scheduleAutoplay = () => {
+  stopAutoplay();
+  if (userPaused || interactionPaused || reduceMotion.matches || document.hidden) return;
+  flavorTimer = window.setTimeout(() => activateFlavor(activeFlavorIndex + 1), 4400);
+};
+
+const activateFlavor = (requestedIndex, { manual = false } = {}) => {
+  const nextIndex = (requestedIndex + flavorButtons.length) % flavorButtons.length;
+  if (nextIndex === activeFlavorIndex) {
+    if (manual) scheduleAutoplay();
+    return;
+  }
+
+  activeFlavorIndex = nextIndex;
+  const button = flavorButtons[activeFlavorIndex];
+  const flavor = flavors[button.dataset.key];
+  if (!flavor) return;
+
+  flavorButtons.forEach((item) => {
+    const isActive = item === button;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-pressed", String(isActive));
+  });
+  positionFlavorWheel();
+  flavorSection.classList.remove("is-entering");
+  flavorSection.classList.add("is-switching");
+  window.clearTimeout(flavorTransition);
+
+  flavorTransition = window.setTimeout(() => {
+    flavorSection.style.setProperty("--flavor-bg", flavor.bg);
+    flavorSection.style.setProperty("--flavor-accent", flavor.accent);
+    flavorSection.dataset.flavor = button.dataset.key;
+    flavorImage.src = `./public/assets/web/${flavor.image}`;
+    flavorImage.alt = `Pote Frosz sabor ${flavor.name}`;
+    flavorName.textContent = flavor.name;
+    flavorDescription.textContent = flavor.description;
+    flavorIndex.textContent = flavor.index;
+    flavorSection.classList.remove("is-switching");
+    flavorSection.classList.add("is-entering");
+    window.setTimeout(() => flavorSection.classList.remove("is-entering"), 760);
+  }, 300);
+
+  if (manual) button.blur();
+  scheduleAutoplay();
+};
+
+flavorButtons.forEach((button, index) => {
+  button.addEventListener("click", () => activateFlavor(index, { manual: true }));
+});
+
+flavorPrev.addEventListener("click", () => activateFlavor(activeFlavorIndex - 1, { manual: true }));
+flavorNext.addEventListener("click", () => activateFlavor(activeFlavorIndex + 1, { manual: true }));
+flavorToggle.addEventListener("click", () => {
+  userPaused = !userPaused;
+  flavorToggle.textContent = userPaused ? "SEGUIR" : "PAUSA";
+  flavorToggle.setAttribute("aria-label", userPaused ? "Reanudar autoplay" : "Pausar autoplay");
+  flavorToggle.setAttribute("aria-pressed", String(userPaused));
+  scheduleAutoplay();
+});
+
+[flavorTabs, flavorControls].forEach((element) => {
+  element.addEventListener("pointerenter", () => {
+    interactionPaused = true;
+    stopAutoplay();
+  });
+  element.addEventListener("pointerleave", () => {
+    interactionPaused = false;
+    scheduleAutoplay();
+  });
+  element.addEventListener("focusin", () => {
+    interactionPaused = true;
+    stopAutoplay();
+  });
+  element.addEventListener("focusout", () => {
+    interactionPaused = false;
+    scheduleAutoplay();
   });
 });
+
+document.addEventListener("visibilitychange", scheduleAutoplay);
+reduceMotion.addEventListener?.("change", scheduleAutoplay);
+positionFlavorWheel();
+scheduleAutoplay();
 
 const aboutSlides = [
   { image: "about-frosz.png", alt: "Pote Frosz de chocolate entre elementos de heladería artesanal y entrenamiento" },
