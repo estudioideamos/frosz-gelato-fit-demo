@@ -11,6 +11,7 @@ const flavors = {
 };
 
 const root = document.documentElement;
+const siteHeader = document.querySelector(".site-header");
 const flavorSection = document.querySelector(".flavor-lab");
 const flavorImage = document.querySelector("#flavor-image");
 const flavorName = document.querySelector("#flavor-name");
@@ -32,6 +33,13 @@ let userPaused = false;
 let interactionPaused = false;
 let colorWaveTimer;
 let enterTimer;
+
+const syncStickyHeader = () => {
+  siteHeader.classList.toggle("is-sticky", window.scrollY > 32);
+};
+
+syncStickyHeader();
+window.addEventListener("scroll", syncStickyHeader, { passive: true });
 
 const circularDistance = (index, active) => {
   let distance = index - active;
