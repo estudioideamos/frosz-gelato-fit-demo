@@ -118,7 +118,7 @@ const activateFlavor = (requestedIndex, { manual = false } = {}) => {
   colorWaveTimer = window.setTimeout(() => {
     flavorSection.style.setProperty("--flavor-bg", flavor.bg);
     flavorSection.classList.remove("is-color-expanding");
-  }, 980);
+  }, 1720);
 
   if (manual) button.blur();
   scheduleAutoplay();

@@ -94,7 +94,7 @@ button { color: inherit; font: inherit; }
 .flavor-lab { --flavor-bg: #e97cac; --flavor-accent: #f5b820; --wave-x: 84%; --wave-y: 66%; --wave-color: var(--flavor-bg); position: relative; height: 100svh; min-height: 100svh; padding: 5.5rem var(--page-pad) .8rem; background: var(--flavor-bg); border-bottom: 3px solid var(--ink); overflow: hidden; overflow: clip; isolation: isolate; }
 .flavor-lab::before { content: ""; position: absolute; z-index: 1; inset: 0; background-image: radial-gradient(circle, rgba(17,17,17,.15) 1.2px, transparent 1.5px); background-size: 18px 18px; opacity: .3; pointer-events: none; }
 .flavor-color-wave { position: absolute; z-index: 0; inset: 0; background: var(--wave-color); clip-path: circle(0 at var(--wave-x) var(--wave-y)); pointer-events: none; will-change: clip-path; }
-.flavor-lab.is-color-expanding .flavor-color-wave { animation: flavorColorExpand 1s cubic-bezier(.16,1,.3,1) both; }
+.flavor-lab.is-color-expanding .flavor-color-wave { animation: flavorColorExpand 1.7s cubic-bezier(.16,1,.3,1) both; }
 .flavor-layout { position: relative; z-index: 2; height: 100%; min-height: 0; display: grid; grid-template-columns: 92px minmax(0, 1fr) minmax(230px, 290px); grid-template-areas: "tabs stage detail"; gap: clamp(.8rem, 2vw, 2rem); align-items: stretch; }
 .flavor-stage { grid-area: stage; position: relative; min-height: 0; display: grid; place-items: center; isolation: isolate; }
 .flavor-stage::before { content: ""; position: absolute; z-index: -1; width: min(52vw, 650px); aspect-ratio: 1; border: 3px solid var(--ink); border-radius: 50%; background: var(--flavor-accent); box-shadow: 14px 14px 0 rgba(17,17,17,.18); transition: background-color .55s ease, transform .55s cubic-bezier(.22,1,.36,1); }
