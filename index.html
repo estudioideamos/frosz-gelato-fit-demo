@@ -22,8 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260718-flavors19" />
-    <script src="./script.js?v=20260718-flavors19" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-flavors29" />
+    <script src="./script.js?v=20260718-flavors29" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -111,8 +111,8 @@
         <div class="about-stage">
           <img
             class="about-image"
-            src="./public/assets/web/about-frosz.png"
-            alt="Pote Frosz de chocolate entre elementos de heladería artesanal y entrenamiento"
+            src="./public/assets/web/about-gym-01.jpg"
+            alt="Pote Frosz de chocolate en una escena de entrenamiento sobre banco naranja"
             loading="lazy"
           />
           <button class="about-arrow about-arrow-prev" type="button" aria-label="Ver imagen anterior">←</button>
@@ -130,6 +130,12 @@
 
       <section class="product-showcase" id="sabores" aria-labelledby="showcase-title" data-showcase-flavor="chocolate" tabindex="0">
         <h2 class="sr-only" id="showcase-title">Sabores Frosz</h2>
+        <svg class="showcase-liquid-filter" aria-hidden="true" width="0" height="0">
+          <filter id="showcase-liquid" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008 0.04" numOctaves="2" seed="8" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="B" />
+          </filter>
+        </svg>
         <span class="showcase-color-wave" aria-hidden="true"></span>
         <div class="showcase-content">
           <header class="showcase-intro">
@@ -182,42 +188,41 @@
         <h2 id="benefits-title" class="sr-only">Por qué elegir Frosz</h2>
         <article class="benefit benefit-pink reveal">
           <span>01</span>
+          <svg class="benefit-illustration" viewBox="0 0 240 180" aria-hidden="true">
+            <path class="cream" d="M58 98h124l-15 60H73z" />
+            <path d="M58 98h124l-15 60H73zM67 113h106M86 158l-8-45m76 45 8-45" />
+            <path class="cream" d="M78 98c0-31 19-51 42-51s42 20 42 51" />
+            <path d="M78 98c0-31 19-51 42-51s42 20 42 51M94 78c9-10 24-15 38-10" />
+            <path d="M154 75 184 30M177 25l15 10" />
+            <path d="m51 46 4 9 9 4-9 4-4 9-4-9-9-4 9-4z" />
+          </svg>
           <h3>ARTESANAL<br />DE VERDAD</h3>
           <p>Tradición heladera, textura cremosa y sabor a gelato italiano.</p>
         </article>
         <article class="benefit benefit-orange reveal">
           <span>02</span>
+          <svg class="benefit-illustration benefit-illustration-fit" viewBox="0 0 240 180" aria-hidden="true">
+            <path class="cream" d="M37 64h28v52H37zm138 0h28v52h-28z" />
+            <path d="M37 64h28v52H37zm138 0h28v52h-28zM65 78h22v24H65m110-24h-22v24h22M87 90h66" />
+            <path class="cream" d="m126 31-25 57h23l-10 61 34-74h-24z" />
+            <path d="m126 31-25 57h23l-10 61 34-74h-24z" />
+            <path d="m191 35 3 7 8 3-8 3-3 8-3-8-8-3 8-3zM48 132l3 7 8 3-8 3-3 8-3-8-8-3 8-3z" />
+          </svg>
           <h3>FIT SIN<br />VUELTAS</h3>
           <p>Rico en proteínas, bajo en calorías y sin azúcar agregada.</p>
         </article>
         <article class="benefit benefit-lime reveal">
           <span>03</span>
+          <svg class="benefit-illustration" viewBox="0 0 240 180" aria-hidden="true">
+            <path class="cream" d="M59 79h123l-13 79H72z" />
+            <path d="M59 79h123l-13 79H72zM69 99h103M88 158l-9-59m72 59 11-59" />
+            <path class="cream" d="M78 79c3-26 20-42 42-42s39 16 42 42" />
+            <path d="M78 79c3-26 20-42 42-42s39 16 42 42M103 123c8 10 25 10 34 0M99 110h1m40 0h1M163 62l26-33" />
+            <path d="M194 23c10 3 14 14 8 22l-13 14-12-16c-5-9 2-19 12-17 2-3 3-4 5-3z" />
+          </svg>
           <h3>HECHO PARA<br />DISFRUTAR</h3>
           <p>Un postre para acompañar tu ritmo, no para frenarlo.</p>
         </article>
-      </section>
-
-      <section class="social-feed" id="instagram" aria-labelledby="social-title">
-        <div class="social-heading reveal">
-          <div>
-            <p class="eyebrow">Desde Instagram</p>
-            <h2 id="social-title">FROSZ<br />EN LA VIDA REAL.</h2>
-          </div>
-          <a class="social-handle" href="https://www.instagram.com/ffrosz.helados/" target="_blank" rel="noreferrer">
-            @ffrosz.helados <span aria-hidden="true">↗</span>
-          </a>
-        </div>
-        <div class="social-grid">
-          <a class="social-card social-card-wide reveal" href="https://www.instagram.com/ffrosz.helados/" target="_blank" rel="noreferrer" aria-label="Ver Frosz en Instagram">
-            <img src="./public/assets/web/instagram-claim.jpg" alt="El helado que sí podés comer, campaña de Frosz" loading="lazy" />
-          </a>
-          <a class="social-card reveal" href="https://www.instagram.com/ffrosz.helados/" target="_blank" rel="noreferrer" aria-label="Ver producto Frosz en Instagram">
-            <img src="./public/assets/web/instagram-product.jpg" alt="Pote Frosz proteico artesanal con bochas de helado" loading="lazy" />
-          </a>
-          <a class="social-card reveal" href="https://www.instagram.com/ffrosz.helados/" target="_blank" rel="noreferrer" aria-label="Ver beneficios de Frosz en Instagram">
-            <img src="./public/assets/web/instagram-benefits.jpg" alt="Beneficios del gelato artesanal Frosz" loading="lazy" />
-          </a>
-        </div>
       </section>
 
       <section class="stores" id="puntos" aria-labelledby="stores-title">
@@ -254,7 +259,7 @@
             <defs>
               <path id="newsletter-title-path" d="M 145 302 Q 600 -112 1055 302" />
               <path id="newsletter-copy-path-one" d="M 292 247 Q 600 36 908 247" />
-              <path id="newsletter-copy-path-two" d="M 324 292 Q 600 105 876 292" />
+              <path id="newsletter-copy-path-two" d="M 309 274 Q 600 73 891 274" />
             </defs>
             <text class="newsletter-arc-heading">
               <textPath href="#newsletter-title-path" startOffset="50%" text-anchor="middle">LA DATA MAS FRESCA</textPath>

@@ -164,7 +164,7 @@ scheduleAutoplay();
 
 const showcaseFlavors = [
   { key: "chocolate", name: "CHOCOLATE", tagline: "UN CLASICO QUE ENTRENA TODOS LOS DIAS", description: "CACAO INTENSO, TEXTURA CREMOSA Y TODO EL PLACER DE UNA CUCHARADA QUE VA AL FRENTE.", top: "CHOCO", bottom: "LATE", note: "PROFUNDO, CREMOSO Y CON FINAL BIEN CHOCOLATOSO.", ingredient: "showcase-chocolate.jpg", pot: "flavor-chocolate.png", bg: "#f4b5c7", ink: "#f41624" },
-  { key: "banana", name: "BANANA", tagline: "DULCE, SUAVE Y CON ENERGIA DE TARDE SOLEADA", description: "BANANA MADURA, TEXTURA SEDOSA Y UN PERFIL DULCE QUE SE SIENTE LIVIANO HASTA LA ULTIMA CUCHARADA.", top: "BANA", bottom: "NA", note: "CREMOSO, DORADO Y LISTO PARA LEVANTARTE EL DIA.", ingredient: "showcase-banana.jpg", pot: "flavor-banana.png", bg: "#f6d957", ink: "#ef4c35" },
+  { key: "banana", name: "BANANA", tagline: "DULCE, SUAVE Y CON ENERGIA DE TARDE SOLEADA", description: "BANANA MADURA, TEXTURA SEDOSA Y UN PERFIL DULCE QUE SE SIENTE LIVIANO HASTA LA ULTIMA CUCHARADA.", top: "BANANA", bottom: "SPLIT", note: "CREMOSO, DORADO Y LISTO PARA LEVANTARTE EL DIA.", ingredient: "showcase-banana.jpg", pot: "flavor-banana.png", bg: "#f6d957", ink: "#ef4c35" },
   { key: "menta", name: "MENTA GRANIZADA", tagline: "FRESCURA CON UN CRUNCH QUE NO NEGOCIA", description: "MENTA LIMPIA, CHOCOLATE INTENSO Y UNA TEXTURA QUE ARRANCA FRESCA Y TERMINA BIEN ARRIBA.", top: "MENTA", bottom: "CRUNCH", note: "FRESCA, FILOSA Y CON CHOCOLATE EN CADA VUELTA.", ingredient: "showcase-menta.jpg", pot: "flavor-menta.png", bg: "#a9d8c1", ink: "#27223b" },
   { key: "frutos", name: "FRUTOS DEL BOSQUE", tagline: "UN MOOD FRUTAL CON PULSO PROPIO", description: "MORAS, FRAMBUESAS Y ARANDANOS EN UNA MEZCLA VIBRANTE, CREMOSA Y CON EL PUNTO JUSTO DE ACIDEZ.", top: "BERRY", bottom: "MOOD", note: "FRUTAL, INTENSO Y CON UNA ACIDEZ QUE DESPIERTA.", ingredient: "showcase-frutos.jpg", pot: "flavor-frutos.png", bg: "#d9bfdf", ink: "#8c245f" },
   { key: "cafe", name: "CAFE MOKA", tagline: "LA PAUSA QUE TE VUELVE A PONER EN MOVIMIENTO", description: "CAFE TOSTADO, CACAO Y CREMOSIDAD EN UNA COMBINACION PROFUNDA QUE RINDE A CUALQUIER HORA.", top: "CAFE", bottom: "MOKA", note: "AROMA TOSTADO, CACAO Y UNA PAUSA QUE RINDE.", ingredient: "showcase-cafe.jpg", pot: "flavor-cafe.png", bg: "#d7b087", ink: "#5a2e20" },
@@ -287,7 +287,7 @@ function activateShowcase(requestedIndex, { direction = 1, manual = false } = {}
     showcaseSection.classList.remove("is-entering", "is-wave-forward", "is-wave-backward", "is-backward");
     showcaseLocked = false;
     scheduleShowcaseAutoplay();
-  }, 1280);
+  }, 1580);
 }
 
 showcasePrev.addEventListener("click", () => activateShowcase(showcaseActiveIndex - 1, { direction: -1, manual: true }));
@@ -320,26 +320,65 @@ document.addEventListener("visibilitychange", scheduleShowcaseAutoplay);
 reduceMotion.addEventListener?.("change", scheduleShowcaseAutoplay);
 
 const aboutSlides = [
-  { image: "about-frosz.png", alt: "Pote Frosz de chocolate entre elementos de heladería artesanal y entrenamiento" },
-  { image: "campaign-hero.png", alt: "Pote Frosz en una campaña visual rosa y amarilla" }
+  { image: "about-gym-01.jpg", alt: "Pote Frosz de chocolate en una escena de entrenamiento sobre banco naranja" },
+  { image: "about-gym-02.jpg", alt: "Pote Frosz cremoso en un gimnasio junto a dos deportistas" },
+  { image: "about-gym-03.jpg", alt: "Pote Frosz de chocolate en primer plano después de entrenar" }
 ];
 const aboutStage = document.querySelector(".about-stage");
 const aboutImage = document.querySelector(".about-image");
 let aboutSlideIndex = 0;
+let aboutAutoplayTimer;
+let aboutTransitionTimer;
+let aboutVisible = false;
+let aboutPaused = false;
+
+aboutSlides.forEach(({ image }) => {
+  const preload = new Image();
+  preload.src = `./public/assets/web/${image}`;
+});
+
+const stopAboutAutoplay = () => window.clearTimeout(aboutAutoplayTimer);
+
+const scheduleAboutAutoplay = () => {
+  stopAboutAutoplay();
+  if (!aboutVisible || aboutPaused || reduceMotion.matches || document.hidden) return;
+  aboutAutoplayTimer = window.setTimeout(() => activateAboutSlide(aboutSlideIndex + 1), 3000);
+};
+
+const activateAboutSlide = (requestedIndex) => {
+  stopAboutAutoplay();
+  aboutSlideIndex = (requestedIndex + aboutSlides.length) % aboutSlides.length;
+  aboutStage.classList.add("is-switching");
+  window.clearTimeout(aboutTransitionTimer);
+  aboutTransitionTimer = window.setTimeout(() => {
+    const slide = aboutSlides[aboutSlideIndex];
+    aboutImage.src = `./public/assets/web/${slide.image}`;
+    aboutImage.alt = slide.alt;
+    aboutStage.classList.remove("is-switching");
+    scheduleAboutAutoplay();
+  }, 240);
+};
 
 document.querySelectorAll(".about-arrow").forEach((button) => {
   button.addEventListener("click", () => {
     const direction = button.classList.contains("about-arrow-next") ? 1 : -1;
-    aboutSlideIndex = (aboutSlideIndex + direction + aboutSlides.length) % aboutSlides.length;
-    aboutStage.classList.add("is-switching");
-    window.setTimeout(() => {
-      const slide = aboutSlides[aboutSlideIndex];
-      aboutImage.src = `./public/assets/web/${slide.image}`;
-      aboutImage.alt = slide.alt;
-      aboutStage.classList.remove("is-switching");
-    }, 240);
+    activateAboutSlide(aboutSlideIndex + direction);
   });
 });
+
+aboutStage.addEventListener("mouseenter", () => { aboutPaused = true; stopAboutAutoplay(); });
+aboutStage.addEventListener("mouseleave", () => { aboutPaused = false; scheduleAboutAutoplay(); });
+aboutStage.addEventListener("focusin", () => { aboutPaused = true; stopAboutAutoplay(); });
+aboutStage.addEventListener("focusout", () => { aboutPaused = false; scheduleAboutAutoplay(); });
+
+const aboutObserver = new IntersectionObserver(([entry]) => {
+  aboutVisible = entry.isIntersecting;
+  if (aboutVisible) scheduleAboutAutoplay();
+  else stopAboutAutoplay();
+}, { threshold: .25 });
+aboutObserver.observe(aboutStage);
+document.addEventListener("visibilitychange", scheduleAboutAutoplay);
+reduceMotion.addEventListener?.("change", scheduleAboutAutoplay);
 
 document.querySelectorAll(".store-filter").forEach((button) => {
   button.addEventListener("click", () => {
