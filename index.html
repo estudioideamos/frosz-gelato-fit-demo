@@ -22,8 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260718-hero3" />
-    <script src="./script.js?v=20260718-hero3" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-newsletter1" />
+    <script src="./script.js?v=20260718-newsletter1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -192,6 +192,34 @@
           <article class="store-card reveal" data-zone="sur"><span>Sudeste</span><h3>La Vaca Rosa</h3><p>Mariano Castex 3289<br />Esteban Echeverría</p></article>
           <article class="store-card reveal" data-zone="caba"><span>CABA</span><h3>Coquitos Palermo</h3><p>Av. Santa Fe 3351<br />Palermo</p></article>
           <article class="store-card reveal" data-zone="caba"><span>CABA</span><h3>Monster Fitness</h3><p>Av. Córdoba 3066<br />Palermo</p></article>
+        </div>
+      </section>
+
+      <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="newsletter-orbit">
+          <h2 class="sr-only" id="newsletter-title">LA DATA MAS FRESCA</h2>
+          <svg class="newsletter-arc-title" viewBox="0 0 1200 350" aria-hidden="true">
+            <defs>
+              <path id="newsletter-title-path" d="M 90 305 Q 600 -70 1110 305" />
+            </defs>
+            <text>
+              <textPath href="#newsletter-title-path" startOffset="50%" text-anchor="middle">LA DATA MAS FRESCA</textPath>
+            </text>
+          </svg>
+
+          <p class="newsletter-copy">SUMATE AL NEWSLETTER DE FROSZ Y ENTERATE PRIMERO DE NUEVOS SABORES, PUNTOS DE VENTA Y DROPS HELADOS.</p>
+
+          <div class="newsletter-product" aria-hidden="true">
+            <span class="newsletter-halo"></span>
+            <img src="./public/assets/web/flavor-frutilla.png" alt="" loading="lazy" />
+          </div>
+
+          <form class="newsletter-form" id="newsletter-form" novalidate>
+            <label class="sr-only" for="newsletter-email">Tu email</label>
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="TU EMAIL" required />
+            <button type="submit">QUIERO LA PRIMICIA <span aria-hidden="true">↗</span></button>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
 

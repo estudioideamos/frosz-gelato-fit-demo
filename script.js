@@ -162,6 +162,27 @@ document.querySelectorAll(".store-filter").forEach((button) => {
   });
 });
 
+const newsletterForm = document.querySelector("#newsletter-form");
+const newsletterEmail = document.querySelector("#newsletter-email");
+const newsletterStatus = document.querySelector("#newsletter-status");
+
+newsletterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!newsletterEmail.checkValidity()) {
+    newsletterEmail.reportValidity();
+    return;
+  }
+
+  newsletterForm.classList.add("is-sent");
+  newsletterStatus.textContent = "LISTO. YA ESTAS EN LA FRECUENCIA.";
+  newsletterEmail.value = "";
+});
+
+newsletterEmail.addEventListener("input", () => {
+  newsletterForm.classList.remove("is-sent");
+  newsletterStatus.textContent = "";
+});
+
 const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.querySelector(".mobile-nav");
 menuButton.addEventListener("click", () => {

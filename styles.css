@@ -206,6 +206,26 @@ button { color: inherit; font: inherit; }
 .store-card h3 { margin: auto 0 .7rem; font: 400 clamp(1.7rem, 2.5vw, 2.7rem)/.95 var(--display); text-transform: uppercase; }
 .store-card p { margin: 0; line-height: 1.45; }
 
+.newsletter { position: relative; min-height: 1080px; overflow: hidden; isolation: isolate; background-color: var(--orange); background-image: radial-gradient(circle at 5% 18%, #ffdc72 0 10.5%, transparent 10.7%), radial-gradient(circle at 44% 5%, #ffdc72 0 14%, transparent 14.2%), radial-gradient(circle at 82% -6%, #ffdc72 0 14%, transparent 14.2%), radial-gradient(circle at 101% 19%, #ffdc72 0 12%, transparent 12.2%), radial-gradient(circle at 96% 55%, #ffdc72 0 9%, transparent 9.2%); border-bottom: 3px solid var(--ink); }
+.newsletter-orbit { position: absolute; top: clamp(6.5rem, 9vw, 9rem); bottom: 0; left: 50%; width: min(94vw, 1500px); min-height: 920px; overflow: hidden; color: #ffdc72; background: #b91e3f; border-radius: 50% 50% 0 0 / 38% 38% 0 0; transform: translateX(-50%); }
+.newsletter-arc-title { position: absolute; z-index: 3; top: 1rem; left: 50%; width: 92%; height: auto; overflow: visible; transform: translateX(-50%); }
+.newsletter-arc-title text { fill: currentColor; font: 400 126px/1 var(--condensed); letter-spacing: 2px; }
+.newsletter-copy { position: absolute; z-index: 4; top: clamp(15rem, 23vw, 20rem); left: 50%; width: min(44ch, 52vw); margin: 0; text-align: center; color: #ffdc72; font: 400 clamp(1.05rem, 1.55vw, 1.55rem)/1.08 var(--condensed); letter-spacing: .025em; transform: translateX(-50%) rotate(-1deg); }
+.newsletter-product { position: absolute; z-index: 2; left: 50%; bottom: 7rem; width: min(39vw, 520px); aspect-ratio: 1; transform: translateX(-50%); animation: newsletterFloat 4.8s ease-in-out infinite; }
+.newsletter-product img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(20px 28px 0 rgba(55,4,19,.22)); }
+.newsletter-halo { position: absolute; z-index: 1; left: 50%; top: 48%; width: 76%; aspect-ratio: 1; border: 3px solid rgba(255,220,114,.5); border-radius: 50%; transform: translate(-50%,-50%); }
+.newsletter-halo::before, .newsletter-halo::after { content: ""; position: absolute; border-radius: 50%; background: #ffdc72; }
+.newsletter-halo::before { top: 1%; right: -9%; width: 48px; aspect-ratio: 1; }
+.newsletter-halo::after { bottom: 12%; left: -8%; width: 26px; aspect-ratio: 1; }
+.newsletter-form { position: absolute; z-index: 5; right: 0; bottom: 2rem; left: 0; width: min(780px, 82%); min-height: 66px; margin: auto; padding: .4rem; display: grid; grid-template-columns: 1fr auto; gap: .45rem; border-radius: 999px; background: var(--cream); box-shadow: 0 8px 0 rgba(55,4,19,.28); }
+.newsletter-form input { min-width: 0; padding: 0 1.35rem; border: 0; outline: 0; background: transparent; color: var(--ink); font: 700 1rem/1 var(--body); }
+.newsletter-form input::placeholder { color: rgba(17,17,17,.62); }
+.newsletter-form:focus-within { box-shadow: 0 0 0 4px #ffdc72, 0 8px 0 rgba(55,4,19,.28); }
+.newsletter-form button { padding: 0 1.5rem; border: 0; border-radius: 999px; background: var(--orange); color: var(--ink); font-weight: 800; cursor: pointer; transition: transform .2s ease, background .2s ease; }
+.newsletter-form button:hover, .newsletter-form button:focus-visible { background: var(--lime); transform: rotate(-1deg) scale(1.025); }
+.newsletter-status { position: absolute; right: 0; bottom: calc(100% + .7rem); left: 0; margin: 0; text-align: center; color: #ffdc72; font: 400 1rem/1 var(--condensed); letter-spacing: .04em; }
+.newsletter-form.is-sent { box-shadow: 0 0 0 4px var(--lime), 0 8px 0 rgba(55,4,19,.28); }
+
 .closing { position: relative; min-height: 830px; padding: clamp(6rem, 10vw, 10rem) var(--page-pad); background: var(--ink); color: var(--cream); overflow: hidden; }
 .closing h2 { position: relative; z-index: 2; font-size: clamp(4.5rem, 13vw, 13rem); }
 .closing-links { position: relative; z-index: 4; display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 3rem; }
@@ -224,6 +244,7 @@ button { color: inherit; font: inherit; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 @keyframes flavorEnter { 0% { transform: scale(.35) rotate(18deg); opacity: 0; filter: blur(10px); } 68% { transform: scale(1.06) rotate(-2deg); opacity: 1; filter: blur(0); } 100% { transform: scale(1) rotate(0); opacity: 1; filter: blur(0); } }
 @keyframes flavorHeroEnter { 0% { transform: translateY(22%) scale(.35) rotate(18deg); opacity: 0; filter: blur(10px); } 68% { transform: translateY(22%) scale(1.06) rotate(-2deg); opacity: 1; filter: blur(0); } 100% { transform: translateY(22%) scale(1) rotate(0); opacity: 1; filter: blur(0); } }
+@keyframes newsletterFloat { 0%, 100% { transform: translateX(-50%) translateY(-7px) rotate(-1.5deg); } 50% { transform: translateX(-50%) translateY(10px) rotate(1.5deg); } }
 
 @media (max-width: 1000px) {
   .site-header { grid-template-columns: 1fr auto; }
@@ -262,6 +283,8 @@ button { color: inherit; font: inherit; }
   .stores-heading { grid-template-columns: 1fr; }
   .store-grid { grid-template-columns: repeat(2, 1fr); }
   .closing-product { width: min(60vw, 520px); right: -2%; }
+  .newsletter { min-height: 980px; }
+  .newsletter-product { width: min(52vw, 500px); }
   .flavor-hero .flavor-image-wrap { width: min(44vw, 440px); }
   .flavor-masthead h1 { font-size: clamp(4.2rem, 9.2vw, 7rem); }
 }
@@ -332,6 +355,14 @@ button { color: inherit; font: inherit; }
   .social-card-wide { aspect-ratio: 1.23; }
   .store-grid { grid-template-columns: 1fr; }
   .store-card { min-height: 210px; }
+  .newsletter { min-height: 880px; background-image: radial-gradient(circle at -5% 12%, #ffdc72 0 11%, transparent 11.3%), radial-gradient(circle at 52% 0%, #ffdc72 0 15%, transparent 15.3%), radial-gradient(circle at 105% 18%, #ffdc72 0 13%, transparent 13.3%); }
+  .newsletter-orbit { top: 5.4rem; width: calc(100% - 1.25rem); min-height: 800px; border-radius: 50% 50% 0 0 / 24% 24% 0 0; }
+  .newsletter-arc-title { top: 1.4rem; width: 126%; }
+  .newsletter-copy { top: 13.8rem; width: 76%; font-size: .94rem; }
+  .newsletter-product { bottom: 7.5rem; width: min(88vw, 390px); }
+  .newsletter-form { bottom: 1.4rem; width: calc(100% - 2rem); min-height: 58px; }
+  .newsletter-form input { width: 100%; padding: 0 .85rem; font-size: .86rem; }
+  .newsletter-form button { padding: 0 .9rem; font-size: .75rem; }
   .closing { min-height: 700px; }
   .closing h2 { font-size: 16vw; }
   .closing-product { width: 82vw; right: -15%; bottom: -10%; }
