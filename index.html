@@ -22,8 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260718-color2" />
-    <script src="./script.js?v=20260718-color2" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260718-newsletter5" />
+    <script src="./script.js?v=20260718-newsletter5" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -212,17 +212,24 @@
           <svg class="newsletter-arc-title" viewBox="0 0 1200 350" aria-hidden="true">
             <defs>
               <path id="newsletter-title-path" d="M 90 305 Q 600 -70 1110 305" />
+              <path id="newsletter-copy-path-one" d="M 294 250 Q 600 105 906 250" />
+              <path id="newsletter-copy-path-two" d="M 330 286 Q 600 170 870 286" />
             </defs>
-            <text>
+            <text class="newsletter-arc-heading">
               <textPath href="#newsletter-title-path" startOffset="50%" text-anchor="middle">LA DATA MAS FRESCA</textPath>
+            </text>
+            <text class="newsletter-arc-copy">
+              <textPath href="#newsletter-copy-path-one" startOffset="50%" text-anchor="middle">SUMATE AL NEWSLETTER Y ENTERATE PRIMERO</textPath>
+            </text>
+            <text class="newsletter-arc-copy">
+              <textPath href="#newsletter-copy-path-two" startOffset="50%" text-anchor="middle">DE NUEVOS SABORES, PUNTOS DE VENTA Y DROPS HELADOS</textPath>
             </text>
           </svg>
 
-          <p class="newsletter-copy">SUMATE AL NEWSLETTER DE FROSZ Y ENTERATE PRIMERO DE NUEVOS SABORES, PUNTOS DE VENTA Y DROPS HELADOS.</p>
+          <p class="sr-only">Sumate al newsletter de Frosz y enterate primero de nuevos sabores, puntos de venta y drops helados.</p>
 
           <div class="newsletter-product" aria-hidden="true">
-            <span class="newsletter-halo"></span>
-            <img src="./public/assets/web/flavor-frutilla.png" alt="" loading="lazy" />
+            <img src="./public/assets/web/newsletter-frutos-cutout-v2.png" alt="" loading="lazy" />
           </div>
 
           <form class="newsletter-form" id="newsletter-form" novalidate>
