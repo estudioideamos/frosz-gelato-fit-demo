@@ -22,12 +22,16 @@ const flavorControls = document.querySelector(".flavor-controls");
 const flavorPrev = document.querySelector("#flavor-prev");
 const flavorNext = document.querySelector("#flavor-next");
 const flavorToggle = document.querySelector("#flavor-toggle");
+const flavorColorWave = document.querySelector(".flavor-color-wave");
+const ingredientBurst = document.querySelector("#ingredient-burst");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let activeFlavorIndex = 0;
 let flavorTimer;
 let flavorTransition;
 let userPaused = false;
 let interactionPaused = false;
+let colorWaveTimer;
+let enterTimer;
 
 const circularDistance = (index, active) => {
   let distance = index - active;
@@ -58,10 +62,22 @@ const activateFlavor = (requestedIndex, { manual = false } = {}) => {
     return;
   }
 
-  activeFlavorIndex = nextIndex;
-  const button = flavorButtons[activeFlavorIndex];
+  const button = flavorButtons[nextIndex];
   const flavor = flavors[button.dataset.key];
   if (!flavor) return;
+
+  const sectionRect = flavorSection.getBoundingClientRect();
+  const buttonRect = button.getBoundingClientRect();
+  const waveX = buttonRect.width ? buttonRect.left + buttonRect.width / 2 - sectionRect.left : sectionRect.width * .84;
+  const waveY = buttonRect.height ? buttonRect.top + buttonRect.height / 2 - sectionRect.top : sectionRect.height * .66;
+  flavorSection.style.setProperty("--wave-x", `${waveX}px`);
+  flavorSection.style.setProperty("--wave-y", `${waveY}px`);
+  flavorSection.style.setProperty("--wave-color", flavor.bg);
+  flavorSection.classList.remove("is-color-expanding");
+  void flavorColorWave.offsetWidth;
+  flavorSection.classList.add("is-color-expanding");
+
+  activeFlavorIndex = nextIndex;
 
   flavorButtons.forEach((item) => {
     const isActive = item === button;
@@ -74,7 +90,6 @@ const activateFlavor = (requestedIndex, { manual = false } = {}) => {
   window.clearTimeout(flavorTransition);
 
   flavorTransition = window.setTimeout(() => {
-    flavorSection.style.setProperty("--flavor-bg", flavor.bg);
     flavorSection.style.setProperty("--flavor-accent", flavor.accent);
     flavorSection.dataset.flavor = button.dataset.key;
     flavorImage.src = `./public/assets/web/${flavor.image}`;
@@ -84,8 +99,18 @@ const activateFlavor = (requestedIndex, { manual = false } = {}) => {
     flavorIndex.textContent = flavor.index;
     flavorSection.classList.remove("is-switching");
     flavorSection.classList.add("is-entering");
-    window.setTimeout(() => flavorSection.classList.remove("is-entering"), 760);
-  }, 300);
+    flavorSection.classList.remove("is-bursting");
+    void ingredientBurst.offsetWidth;
+    flavorSection.classList.add("is-bursting");
+    window.clearTimeout(enterTimer);
+    enterTimer = window.setTimeout(() => flavorSection.classList.remove("is-entering"), 1220);
+  }, 460);
+
+  window.clearTimeout(colorWaveTimer);
+  colorWaveTimer = window.setTimeout(() => {
+    flavorSection.style.setProperty("--flavor-bg", flavor.bg);
+    flavorSection.classList.remove("is-color-expanding");
+  }, 980);
 
   if (manual) button.blur();
   scheduleAutoplay();
