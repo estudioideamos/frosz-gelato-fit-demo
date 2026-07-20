@@ -255,27 +255,27 @@ button { color: inherit; font: inherit; }
 .flavor-hero.is-bursting .ingredient-piece-7 { animation-delay: .14s, 1.49s; }
 .flavor-hero.is-bursting .ingredient-piece-8 { animation-delay: .08s, 1.43s; }
 .flavor-hero[data-flavor="chocolate"] .ingredient-burst { --ingredient-position: 0% 0%; }
-.flavor-hero[data-flavor="banana"] .ingredient-burst { --ingredient-position: 50% 0%; }
-.flavor-hero[data-flavor="menta"] .ingredient-burst { --ingredient-position: 100% 0%; }
-.flavor-hero[data-flavor="frutos"] .ingredient-burst { --ingredient-position: 0% 50%; }
-.flavor-hero[data-flavor="cafe"] .ingredient-burst { --ingredient-position: 50% 50%; }
-.flavor-hero[data-flavor="mani"] .ingredient-burst { --ingredient-position: 100% 50%; }
-.flavor-hero[data-flavor="coco"] .ingredient-burst { --ingredient-position: 0% 100%; }
 .flavor-hero[data-flavor="ddl"] .ingredient-burst { --ingredient-position: 50% 100%; }
 .flavor-hero[data-flavor="frutilla"] .ingredient-burst { --ingredient-position: 100% 100%; }
+.flavor-hero[data-flavor="frutos"] .ingredient-burst { --ingredient-position: 0% 50%; }
+.flavor-hero[data-flavor="mani"] .ingredient-burst { --ingredient-position: 100% 50%; }
+.flavor-hero[data-flavor="limon"] .ingredient-burst { --ingredient-position: 50% 0%; }
+.flavor-hero[data-flavor="vainilla"] .ingredient-burst { --ingredient-position: 0% 100%; }
+.flavor-hero[data-flavor="coco"] .ingredient-burst { --ingredient-position: 0% 100%; }
+.flavor-hero[data-flavor="banana"] .ingredient-burst { --ingredient-position: 50% 0%; }
 .flavor-arc { position: absolute; z-index: 2; right: var(--arc-right); bottom: var(--arc-bottom); width: var(--arc-size); aspect-ratio: 1; border: var(--arc-border) solid rgba(247,240,223,.48); border-radius: 50%; pointer-events: none; }
 .flavor-hero .flavor-tabs { position: absolute; z-index: 7; right: var(--arc-right); bottom: var(--arc-bottom); width: var(--arc-size); height: var(--arc-size); padding: 0; display: block; pointer-events: none; }
 .flavor-hero .flavor-tab { --angle: -34deg; --tab-scale: 1; --tab-lift: 0px; --thumb-bg: var(--cream); position: absolute; top: 50%; left: 50%; width: 58px; height: 58px; min-height: 0; max-height: none; flex: none; padding: 0; overflow: hidden; border: 0; background: radial-gradient(circle at 34% 24%, rgba(255,255,255,.92) 0 7%, rgba(255,255,255,.34) 8% 24%, transparent 25%), var(--thumb-bg); box-shadow: 0 8px 16px rgba(55,29,35,.18), inset 0 0 0 2px rgba(255,255,255,.52); opacity: 0; visibility: hidden; pointer-events: none; transform: translate(-50%,-50%) rotate(var(--angle)) translateY(calc(var(--arc-size) / -2 - 36px)) rotate(calc(-1 * var(--angle))) translateY(var(--tab-lift)) scale(var(--tab-scale)); transition: transform .82s cubic-bezier(.16,1,.3,1), opacity .38s ease, visibility 0s linear .82s, background .35s ease, box-shadow .35s ease; }
 .flavor-hero .flavor-tab img { position: absolute; left: 50%; top: 50%; width: 100%; height: 100%; margin: 0; object-fit: contain; object-position: center; transform: translate(-50%,-50%) scale(.98); filter: drop-shadow(0 4px 3px rgba(40,21,26,.28)); }
 .flavor-hero .flavor-tab[data-key="chocolate"] { --thumb-bg: #f4d8b3; }
-.flavor-hero .flavor-tab[data-key="banana"] { --thumb-bg: #f7d856; }
-.flavor-hero .flavor-tab[data-key="menta"] { --thumb-bg: #b9e1cb; }
-.flavor-hero .flavor-tab[data-key="frutos"] { --thumb-bg: #d8c7eb; }
-.flavor-hero .flavor-tab[data-key="cafe"] { --thumb-bg: #dfc0a3; }
-.flavor-hero .flavor-tab[data-key="mani"] { --thumb-bg: #f4c276; }
-.flavor-hero .flavor-tab[data-key="coco"] { --thumb-bg: #c9e8f2; }
 .flavor-hero .flavor-tab[data-key="ddl"] { --thumb-bg: #ead1b5; }
 .flavor-hero .flavor-tab[data-key="frutilla"] { --thumb-bg: #f5b8cb; }
+.flavor-hero .flavor-tab[data-key="frutos"] { --thumb-bg: #d8c7eb; }
+.flavor-hero .flavor-tab[data-key="mani"] { --thumb-bg: #f4c276; }
+.flavor-hero .flavor-tab[data-key="limon"] { --thumb-bg: #f8e883; }
+.flavor-hero .flavor-tab[data-key="vainilla"] { --thumb-bg: #f1dfba; }
+.flavor-hero .flavor-tab[data-key="coco"] { --thumb-bg: #c9e8f2; }
+.flavor-hero .flavor-tab[data-key="banana"] { --thumb-bg: #f7d856; }
 .flavor-hero .flavor-tab[data-slot="-2"] { --angle: -66deg; }
 .flavor-hero .flavor-tab[data-slot="-1"] { --angle: -50deg; }
 .flavor-hero .flavor-tab[data-slot="0"] { --angle: -34deg; }
