@@ -78,12 +78,14 @@ button { color: inherit; font: inherit; }
 .about-footer { position: relative; min-width: 0; min-height: 190px; margin-top: clamp(.7rem, 1.2vw, 1.15rem); display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: start; gap: clamp(1.8rem, 3vw, 3.5rem); }
 .about-footer h3 { min-width: 0; width: 100%; margin: 0; color: #f41624; font: 400 clamp(4rem, 6.35vw, 7.3rem)/.92 var(--condensed); letter-spacing: .004em; transform: scaleX(.94); transform-origin: left top; }
 .about-footer h3 span { display: block; white-space: nowrap; }
-.about-sticker { position: absolute; z-index: 2; left: 31.5%; top: 46%; width: clamp(84px, 8.4vw, 116px); aspect-ratio: 1; display: grid; place-items: center; border: 7px solid var(--white); border-radius: 50%; background: #ffe45c; color: var(--ink); box-shadow: 0 0 0 3px var(--ink), 7px 8px 0 #f3b4c6; transform: rotate(-7deg); animation: stickerWiggle 4.2s ease-in-out infinite; }
-.about-sticker::before { content: none; }
-.about-sticker svg { width: 76%; height: 76%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
-.about-sticker .sticker-eye { fill: currentColor; stroke: none; }
+.about-sticker { position: absolute; z-index: 2; left: 31.5%; top: 46%; width: clamp(84px, 8.4vw, 116px); aspect-ratio: 1; display: grid; place-items: center; border: 7px solid #ffe889; border-radius: 50%; background: #ffd31c; color: #f24b2f; box-shadow: 0 0 0 3px var(--cream), 7px 8px 0 #f3b4c6; transform: rotate(-8deg); animation: stickerWiggle 4.2s ease-in-out infinite; }
+.about-sticker::before { content: ""; position: absolute; right: 9%; bottom: -12%; width: 3px; height: 12px; border-radius: 99px; background: #ffd31c; box-shadow: -11px -2px 0 #ffd31c, 10px -4px 0 #ffd31c; transform: rotate(-8deg); }
+.about-sticker svg { width: 84%; height: 84%; overflow: visible; fill: none; stroke: currentColor; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.about-sticker .sticker-eye, .about-sticker .sticker-spark { fill: currentColor; stroke: none; }
+.about-sticker .sticker-shine { stroke: #fff2ae; stroke-width: 5; }
+.about-sticker .sticker-smile { stroke-width: 6.5; }
 .about-story { position: relative; min-width: 0; min-height: 116px; margin: 1.35rem 0 0; padding: 1.35rem 4.6rem 1.35rem 1.8rem; border-radius: 999px; background: #f3b4c6; display: flex; align-items: center; }
-.about-story p { margin: 0; color: #f41624; font: 400 clamp(.9rem, 1.18vw, 1.26rem)/1.18 var(--condensed); letter-spacing: .009em; text-transform: uppercase; }
+.about-story p { margin: 0; color: #f41624; font: 400 clamp(.9rem, 1.05vw, 1.12rem)/1.15 var(--condensed); letter-spacing: .009em; text-transform: uppercase; }
 .about-story > span { position: absolute; right: .8rem; bottom: -.8rem; width: 54px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #493f38; color: var(--cream); font-size: 1.6rem; }
 
 /* Slider editorial de productos inspirado en la composicion de Boba. */
@@ -451,8 +453,8 @@ button { color: inherit; font: inherit; }
   .manifesto { height: auto; min-height: 0; padding: 3.2rem 1rem 2.25rem; gap: 1.35rem; }
   .about-title { font-size: clamp(3.35rem, 14.4vw, 4rem); line-height: .9; white-space: normal; display: grid; justify-items: center; gap: .2rem; text-align: center; }
   .about-title span { width: max-content; transform-origin: center; }
-  .about-title span:first-child { transform: scaleX(1.16); }
-  .about-title span:last-child { transform: scaleX(1.35); }
+  .about-title span:first-child { transform: scaleX(1.08); }
+  .about-title span:last-child { transform: scaleX(1.26); }
   .social-heading h2, .stores-heading h2 { font-size: clamp(2.7rem, 13vw, 4.5rem); }
   .about-stage { min-height: 310px; aspect-ratio: auto; border-radius: 28px; }
   .about-image { object-position: center; }
@@ -462,8 +464,8 @@ button { color: inherit; font: inherit; }
   .about-footer { min-height: 0; grid-template-columns: 1fr; gap: 1.25rem; padding-top: .65rem; }
   .about-footer h3 { width: calc(100% - 4rem); font-size: clamp(2.35rem, 9.8vw, 2.8rem); line-height: .92; letter-spacing: .002em; transform: none; }
   .about-sticker { left: auto; right: .05rem; top: .55rem; width: 56px; }
-  .about-story { min-height: 118px; margin: 0; padding: 1.05rem 4.75rem 1.05rem 1.15rem; border-radius: 30px; align-items: center; }
-  .about-story p { font-size: .76rem; line-height: 1.16; letter-spacing: .004em; }
+  .about-story { min-height: 112px; margin: 0; padding: 1.05rem 4.75rem 1.05rem 1.15rem; border-radius: 30px; align-items: center; }
+  .about-story p { font-size: .78rem; line-height: 1.2; letter-spacing: .004em; }
   .about-story > span { right: .55rem; bottom: -.65rem; width: 46px; font-size: 1.25rem; }
   .product-showcase { --showcase-rail-top: 13.8rem; --showcase-rail-height: clamp(172px, 25vh, 195px); --showcase-word-overlap: 1.2rem; height: calc(100svh - 64px); min-height: 550px; }
   .showcase-content::after { content: ""; position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; height: 76px; border-top: 2px solid currentColor; background: color-mix(in srgb, var(--showcase-bg) 86%, var(--cream)); pointer-events: none; }
@@ -473,8 +475,8 @@ button { color: inherit; font: inherit; }
   .showcase-description { max-width: none; font-size: clamp(.42rem, 1.65vw, .58rem); line-height: 1.08; letter-spacing: -.03em; }
   .showcase-words span { font-size: 23vw; line-height: .76; }
   .showcase-scene { width: 72vw; }
-  .showcase-pot { width: min(72vw, 380px); transform: translate(-50%,-58%); }
-  .product-showcase:not([data-showcase-flavor="chocolate"]) .showcase-pot { width: min(92.9vw, 490px); }
+  .showcase-pot { width: min(66vw, 350px); transform: translate(-50%,-52%); }
+  .product-showcase:not([data-showcase-flavor="chocolate"]) .showcase-pot { width: min(92.9vw, 490px); transform: translate(-50%,-58%); }
   .showcase-peek { width: 10vw; min-width: 34px; }
   .showcase-note { z-index: 7; right: 4.5rem; bottom: 2.55rem; left: 4.5rem; width: auto; overflow: hidden; text-align: center; text-overflow: ellipsis; font-size: .5rem; line-height: 1; white-space: nowrap; }
   .showcase-controls { top: 0; right: 1rem; bottom: 0; left: 1rem; height: auto; display: block; }
