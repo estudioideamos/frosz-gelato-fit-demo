@@ -22,8 +22,8 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260720-desktopqa51" />
-    <script src="./script.js?v=20260720-desktopqa51" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260720-uxqa57" />
+    <script src="./script.js?v=20260720-uxqa57" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -42,12 +42,13 @@
         <span class="sr-only">Abrir menú</span>
         <span></span><span></span>
       </button>
-      <nav class="mobile-nav" id="mobile-menu" aria-label="Menú móvil" hidden>
-        <a href="#somos">Somos Frosz</a>
-        <a href="#sabores">Sabores</a>
-        <a href="#puntos">Dónde comprar</a>
-      </nav>
     </header>
+
+    <nav class="mobile-nav" id="mobile-menu" aria-label="Menú móvil" hidden>
+      <a href="#somos">Somos Frosz</a>
+      <a href="#sabores">Sabores</a>
+      <a href="#puntos">Dónde comprar</a>
+    </nav>
 
     <main id="contenido">
       <section class="flavor-lab flavor-hero is-bursting" id="inicio" aria-labelledby="flavor-title" data-flavor="chocolate">
@@ -110,15 +111,22 @@
         <h2 id="manifesto-title" class="about-title"><span>DOS PASIONES.</span><span>UNA FAMILIA</span></h2>
         <div class="about-stage">
           <img
-            class="about-image"
+            class="about-image is-active"
             src="./public/assets/web/about-gym-01.jpg"
             alt="Pote Frosz de chocolate en una escena de entrenamiento sobre banco naranja"
+            loading="lazy"
+          />
+          <img
+            class="about-image"
+            src="./public/assets/web/about-gym-02.jpg"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
           />
           <button class="about-arrow about-arrow-prev" type="button" aria-label="Ver imagen anterior">←</button>
           <button class="about-arrow about-arrow-next" type="button" aria-label="Ver imagen siguiente">→</button>
         </div>
-        <div class="about-footer">
+        <div class="about-footer" id="historia-frosz">
           <h3><span>TRADICION HELADERA</span><span>EN MODO FIT</span></h3>
           <span class="about-sticker" aria-hidden="true">
             <svg viewBox="0 0 100 100" focusable="false">
@@ -175,9 +183,9 @@
           <p class="showcase-note" id="showcase-note">PROFUNDO, CREMOSO Y CON FINAL BIEN CHOCOLATOSO.</p>
 
           <div class="showcase-controls" aria-label="Navegar sabores">
-            <button class="showcase-arrow" id="showcase-prev" type="button" aria-label="Sabor anterior">&#8592;</button>
+            <button class="showcase-arrow" id="showcase-prev" type="button" aria-label="Sabor anterior"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 12H4M10 6l-6 6 6 6" /></svg></button>
             <p><span id="showcase-index">01</span> / 09</p>
-            <button class="showcase-arrow" id="showcase-next" type="button" aria-label="Sabor siguiente">&#8594;</button>
+            <button class="showcase-arrow" id="showcase-next" type="button" aria-label="Sabor siguiente"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6" /></svg></button>
           </div>
 
           <div class="showcase-dots" id="showcase-dots" role="list" aria-label="Elegir sabor"></div>
@@ -195,7 +203,7 @@
         <div class="flavor-overview-grid" id="flavor-overview-grid" aria-label="Todos los sabores Frosz"></div>
       </section>
 
-      <section class="campaign-break" aria-labelledby="campaign-title">
+      <section class="campaign-break" id="campana" aria-labelledby="campaign-title">
         <img src="./public/assets/web/campaign-hero.png" alt="Pote de helado Frosz de frutilla en una escena rosa y amarilla" loading="lazy" />
         <div class="campaign-copy reveal">
           <p class="eyebrow">Tu postre, tu ritmo</p>
@@ -203,7 +211,7 @@
         </div>
       </section>
 
-      <section class="benefits" aria-labelledby="benefits-title">
+      <section class="benefits" id="beneficios" aria-labelledby="benefits-title">
         <h2 id="benefits-title" class="sr-only">Por qué elegir Frosz</h2>
         <article class="benefit benefit-pink reveal">
           <span>01</span>
@@ -271,6 +279,13 @@
         </div>
       </section>
 
+      <div class="marquee" aria-label="Características de Frosz">
+        <div class="marquee-track">
+          <span>PROTEICO</span><i>✦</i><span>ARTESANAL</span><i>✦</i><span>SIN AZUCAR AGREGADA</span><i>✦</i>
+          <span>PROTEICO</span><i>✦</i><span>ARTESANAL</span><i>✦</i><span>SIN AZUCAR AGREGADA</span><i>✦</i>
+        </div>
+      </div>
+
       <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
         <div class="newsletter-orbit">
           <h2 class="sr-only" id="newsletter-title">LA DATA MAS FRESCA</h2>
@@ -279,6 +294,8 @@
               <path id="newsletter-title-path" d="M 145 302 Q 600 -112 1055 302" />
               <path id="newsletter-copy-path-one" d="M 292 247 Q 600 36 908 247" />
               <path id="newsletter-copy-path-two" d="M 309 274 Q 600 73 891 274" />
+              <path id="newsletter-copy-mobile-path-one" d="M 270 250 Q 600 52 930 250" />
+              <path id="newsletter-copy-mobile-path-two" d="M 310 315 Q 600 130 890 315" />
             </defs>
             <text class="newsletter-arc-heading">
               <textPath href="#newsletter-title-path" startOffset="50%" text-anchor="middle">LA DATA MAS FRESCA</textPath>
@@ -290,10 +307,10 @@
               <textPath href="#newsletter-copy-path-two" startOffset="50%" text-anchor="middle">NUEVOS SABORES, PUNTOS DE VENTA Y DROPS HELADOS</textPath>
             </text>
             <text class="newsletter-arc-copy newsletter-arc-copy-mobile newsletter-copy-one">
-              <textPath href="#newsletter-copy-path-one" startOffset="50%" text-anchor="middle">SUMATE AL NEWSLETTER Y ENTERATE</textPath>
+              <textPath href="#newsletter-copy-mobile-path-one" startOffset="50%" text-anchor="middle" textLength="650" lengthAdjust="spacingAndGlyphs">SUMATE AL NEWSLETTER DE FROSZ Y ENTERATE PRIMERO</textPath>
             </text>
             <text class="newsletter-arc-copy newsletter-arc-copy-mobile newsletter-copy-two">
-              <textPath href="#newsletter-copy-path-two" startOffset="50%" text-anchor="middle">SABORES, PUNTOS DE VENTA Y DROPS</textPath>
+              <textPath href="#newsletter-copy-mobile-path-two" startOffset="50%" text-anchor="middle" textLength="525" lengthAdjust="spacingAndGlyphs">NUEVOS SABORES, PUNTOS DE VENTA Y DROPS</textPath>
             </text>
           </svg>
 
@@ -319,6 +336,7 @@
         <img src="./public/assets/web/frosz-wordmark-black.png" alt="Frosz" />
       </a>
       <div class="footer-signoff">
+        <p class="footer-copyright">© 2026 Frosz</p>
         <p class="footer-credit">Creado con <span aria-label="amor">❤️</span> y una cucharada de ideas<span class="footer-mobile-break"><br /></span> por <a href="https://ideamos.com.ar" target="_blank" rel="noopener noreferrer">Estudio Ideamos</a>.</p>
       </div>
     </footer>

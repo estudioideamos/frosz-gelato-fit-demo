@@ -386,12 +386,14 @@ const aboutSlides = [
   { image: "about-gym-03.jpg", alt: "Pote Frosz de chocolate en primer plano después de entrenar" }
 ];
 const aboutStage = document.querySelector(".about-stage");
-const aboutImage = document.querySelector(".about-image");
+const aboutImages = [...document.querySelectorAll(".about-image")];
 let aboutSlideIndex = 0;
+let aboutLayerIndex = 0;
 let aboutAutoplayTimer;
 let aboutTransitionTimer;
 let aboutVisible = false;
 let aboutPaused = false;
+let aboutAnimating = false;
 
 aboutSlides.forEach(({ image }) => {
   const preload = new Image();
@@ -407,17 +409,49 @@ const scheduleAboutAutoplay = () => {
 };
 
 const activateAboutSlide = (requestedIndex) => {
+  if (aboutAnimating) return;
   stopAboutAutoplay();
   aboutSlideIndex = (requestedIndex + aboutSlides.length) % aboutSlides.length;
-  aboutStage.classList.add("is-switching");
   window.clearTimeout(aboutTransitionTimer);
-  aboutTransitionTimer = window.setTimeout(() => {
-    const slide = aboutSlides[aboutSlideIndex];
-    aboutImage.src = `./public/assets/web/${slide.image}`;
-    aboutImage.alt = slide.alt;
-    aboutStage.classList.remove("is-switching");
+
+  const slide = aboutSlides[aboutSlideIndex];
+  const outgoingImage = aboutImages[aboutLayerIndex];
+
+  if (reduceMotion.matches || aboutImages.length < 2) {
+    outgoingImage.src = `./public/assets/web/${slide.image}`;
+    outgoingImage.alt = slide.alt;
     scheduleAboutAutoplay();
-  }, 240);
+    return;
+  }
+
+  aboutAnimating = true;
+  const incomingLayerIndex = aboutLayerIndex === 0 ? 1 : 0;
+  const incomingImage = aboutImages[incomingLayerIndex];
+
+  incomingImage.classList.remove("is-active", "is-exiting");
+  incomingImage.classList.add("is-preparing");
+  incomingImage.src = `./public/assets/web/${slide.image}`;
+  incomingImage.alt = slide.alt;
+  incomingImage.removeAttribute("aria-hidden");
+  outgoingImage.setAttribute("aria-hidden", "true");
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      aboutStage.classList.add("is-switching");
+      incomingImage.classList.remove("is-preparing");
+      incomingImage.classList.add("is-active");
+      outgoingImage.classList.remove("is-active");
+      outgoingImage.classList.add("is-exiting");
+    });
+  });
+
+  aboutTransitionTimer = window.setTimeout(() => {
+    outgoingImage.classList.remove("is-exiting");
+    aboutStage.classList.remove("is-switching");
+    aboutLayerIndex = incomingLayerIndex;
+    aboutAnimating = false;
+    scheduleAboutAutoplay();
+  }, 1400);
 };
 
 document.querySelectorAll(".about-arrow").forEach((button) => {
@@ -475,17 +509,78 @@ newsletterEmail.addEventListener("input", () => {
 
 const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.querySelector(".mobile-nav");
-menuButton.addEventListener("click", () => {
+const menuButtonLabel = menuButton.querySelector(".sr-only");
+const menuColors = Object.values(flavors).map(({ bg }) => bg);
+let menuColorIndex = 0;
+let menuColorTimer;
+let menuCloseTimer;
+let menuResizeTimer;
+let lastMenuToggle = 0;
+
+const stopMenuColors = () => window.clearInterval(menuColorTimer);
+
+const rotateMenuColor = () => {
+  menuColorIndex = (menuColorIndex + 1) % menuColors.length;
+  mobileMenu.style.setProperty("--menu-bg", menuColors[menuColorIndex]);
+};
+
+const openMobileMenu = () => {
+  window.clearTimeout(menuCloseTimer);
+  mobileMenu.hidden = false;
+  menuButton.setAttribute("aria-expanded", "true");
+  menuButtonLabel.textContent = "Cerrar menú";
+  siteHeader.classList.add("is-menu-open");
+  document.body.classList.add("menu-open");
+  menuColorIndex = activeFlavorIndex;
+  mobileMenu.style.setProperty("--menu-bg", menuColors[menuColorIndex]);
+
+  window.requestAnimationFrame(() => mobileMenu.classList.add("is-open"));
+  stopMenuColors();
+  if (!reduceMotion.matches) menuColorTimer = window.setInterval(rotateMenuColor, 1500);
+};
+
+const closeMobileMenu = ({ returnFocus = false } = {}) => {
+  stopMenuColors();
+  mobileMenu.classList.remove("is-open");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButtonLabel.textContent = "Abrir menú";
+  siteHeader.classList.remove("is-menu-open");
+  document.body.classList.remove("menu-open");
+
+  window.clearTimeout(menuCloseTimer);
+  menuCloseTimer = window.setTimeout(() => {
+    if (menuButton.getAttribute("aria-expanded") === "false") mobileMenu.hidden = true;
+    if (returnFocus) menuButton.focus();
+  }, reduceMotion.matches ? 0 : 800);
+};
+
+menuButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  const now = performance.now();
+  if (now - lastMenuToggle < 450) return;
+  lastMenuToggle = now;
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!isOpen));
-  mobileMenu.hidden = isOpen;
+  if (isOpen) closeMobileMenu();
+  else openMobileMenu();
 });
 
 mobileMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuButton.setAttribute("aria-expanded", "false");
-    mobileMenu.hidden = true;
-  });
+  link.addEventListener("click", () => closeMobileMenu());
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+    closeMobileMenu({ returnFocus: true });
+  }
+});
+
+window.addEventListener("resize", () => {
+  window.clearTimeout(menuResizeTimer);
+  menuResizeTimer = window.setTimeout(() => {
+    if (window.matchMedia("(min-width: 1001px)").matches && menuButton.getAttribute("aria-expanded") === "true") {
+      closeMobileMenu();
+    }
+  }, 180);
 });
 
 const revealObserver = new IntersectionObserver(
