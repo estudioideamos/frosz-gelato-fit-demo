@@ -194,6 +194,7 @@ const showcasePeekNext = document.querySelector("#showcase-peek-next");
 const showcaseNote = document.querySelector("#showcase-note");
 const showcaseIndex = document.querySelector("#showcase-index");
 const showcaseDots = document.querySelector("#showcase-dots");
+const showcaseOverview = document.querySelector("#flavor-overview-grid");
 const showcasePrev = document.querySelector("#showcase-prev");
 const showcaseNext = document.querySelector("#showcase-next");
 let showcaseActiveIndex = 0;
@@ -203,6 +204,8 @@ let showcaseWaveTimer;
 let showcaseVisible = false;
 let showcaseInteractionPaused = false;
 let showcaseLocked = false;
+let showcaseQueuedIndex = null;
+let showcaseQueuedDirection = 1;
 let showcasePointerStart = 0;
 
 const wrapShowcaseIndex = (index) => (index + showcaseFlavors.length) % showcaseFlavors.length;
@@ -220,6 +223,44 @@ showcaseFlavors.forEach((flavor, index) => {
     activateShowcase(index, { direction: direction || 1, manual: true });
   });
   showcaseDots.append(dot);
+
+  const card = document.createElement("button");
+  card.className = `flavor-overview-card${index === 0 ? " is-active" : ""}`;
+  card.type = "button";
+  card.dataset.flavorIndex = String(index);
+  card.style.setProperty("--card-bg", flavor.bg);
+  card.style.setProperty("--card-ink", flavor.ink);
+  card.setAttribute("aria-label", `Ver ${flavor.name} en el slider`);
+  card.setAttribute("aria-pressed", String(index === 0));
+  card.innerHTML = `
+    <span class="flavor-overview-number">${String(index + 1).padStart(2, "0")}</span>
+    <span class="flavor-overview-now">AHORA</span>
+    <span class="flavor-overview-image"><img src="./public/assets/web/${flavor.ingredient}" alt="" loading="lazy" /></span>
+    <span class="flavor-overview-name">${flavor.name}</span>
+    <span class="flavor-overview-arrow" aria-hidden="true">&#8599;</span>
+  `;
+  card.addEventListener("click", () => {
+    const selectedIndex = Number(card.dataset.flavorIndex);
+    showcaseInteractionPaused = true;
+    stopShowcaseAutoplay();
+    window.clearTimeout(showcaseTransitionTimer);
+    window.clearTimeout(showcaseWaveTimer);
+    showcaseQueuedIndex = null;
+    showcaseLocked = false;
+    showcaseActiveIndex = selectedIndex;
+    showcaseSection.classList.remove("is-leaving", "is-entering", "is-wave-forward", "is-wave-backward", "is-backward");
+    renderShowcase(selectedIndex, { commitBackground: true });
+    showcaseSection.style.setProperty("--showcase-next-bg", showcaseFlavors[selectedIndex].bg);
+    void showcaseSection.offsetWidth;
+    showcaseSection.classList.add("is-entering");
+    showcaseSection.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "start" });
+    window.setTimeout(() => {
+      showcaseSection.classList.remove("is-entering");
+      showcaseInteractionPaused = false;
+      scheduleShowcaseAutoplay();
+    }, reduceMotion.matches ? 0 : 1900);
+  });
+  showcaseOverview.append(card);
 });
 
 const renderShowcase = (index, { commitBackground = true } = {}) => {
@@ -247,6 +288,11 @@ const renderShowcase = (index, { commitBackground = true } = {}) => {
     dot.classList.toggle("is-active", active);
     dot.setAttribute("aria-pressed", String(active));
   });
+  [...showcaseOverview.children].forEach((card, cardIndex) => {
+    const active = cardIndex === index;
+    card.classList.toggle("is-active", active);
+    card.setAttribute("aria-pressed", String(active));
+  });
 };
 
 const stopShowcaseAutoplay = () => window.clearTimeout(showcaseTimer);
@@ -259,7 +305,14 @@ const scheduleShowcaseAutoplay = () => {
 
 function activateShowcase(requestedIndex, { direction = 1, manual = false } = {}) {
   const nextIndex = wrapShowcaseIndex(requestedIndex);
-  if (showcaseLocked || nextIndex === showcaseActiveIndex) {
+  if (showcaseLocked) {
+    if (manual) {
+      showcaseQueuedIndex = nextIndex;
+      showcaseQueuedDirection = direction;
+    }
+    return;
+  }
+  if (nextIndex === showcaseActiveIndex) {
     if (manual) scheduleShowcaseAutoplay();
     return;
   }
@@ -286,6 +339,14 @@ function activateShowcase(requestedIndex, { direction = 1, manual = false } = {}
     showcaseSection.style.setProperty("--showcase-bg", nextFlavor.bg);
     showcaseSection.classList.remove("is-entering", "is-wave-forward", "is-wave-backward", "is-backward");
     showcaseLocked = false;
+    if (showcaseQueuedIndex !== null && showcaseQueuedIndex !== showcaseActiveIndex) {
+      const queuedIndex = showcaseQueuedIndex;
+      const queuedDirection = showcaseQueuedDirection;
+      showcaseQueuedIndex = null;
+      activateShowcase(queuedIndex, { direction: queuedDirection, manual: true });
+      return;
+    }
+    showcaseQueuedIndex = null;
     scheduleShowcaseAutoplay();
   }, 1580);
 }

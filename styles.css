@@ -140,6 +140,31 @@ button { color: inherit; font: inherit; }
 .product-showcase.is-backward.is-entering .showcase-note { animation-name: showcaseCopyInBackward; }
 .product-showcase.is-backward.is-entering .showcase-scene { animation-name: showcaseSceneInBackward; }
 
+/* Catalogo visual: todos los sabores visibles y conectados con el slider. */
+.flavor-overview { min-height: auto; padding: clamp(6rem, 7vw, 7rem) var(--page-pad) clamp(2.5rem, 4vw, 4rem); overflow: hidden; border-bottom: 3px solid var(--ink); background: var(--cream); }
+.flavor-overview-heading { display: grid; grid-template-columns: minmax(0, 1fr); gap: .8rem; margin-bottom: clamp(1.4rem, 2.4vw, 2.2rem); }
+.flavor-overview-heading .eyebrow { margin: 0 0 .65rem; }
+.flavor-overview-heading h2 { margin: 0; font: 400 clamp(3rem, 5.6vw, 6rem)/.86 var(--condensed); letter-spacing: -.018em; white-space: nowrap; }
+.flavor-overview-heading > p { max-width: 42ch; margin: 0 0 .15rem auto; text-align: right; font-size: clamp(.85rem, 1vw, 1rem); font-weight: 700; line-height: 1.25; }
+.flavor-overview-grid { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); border: 3px solid var(--ink); background: var(--ink); gap: 2px; }
+.flavor-overview-card { --card-bg: var(--pink); --card-ink: var(--ink); position: relative; min-width: 0; height: clamp(210px, 19vw, 290px); padding: .75rem .7rem .8rem; overflow: hidden; border: 0; background: var(--card-bg); color: var(--card-ink); text-align: left; cursor: pointer; isolation: isolate; transition: color .25s ease, transform .35s cubic-bezier(.22,1,.36,1); }
+.flavor-overview-number { position: absolute; z-index: 4; top: .75rem; left: .7rem; font: 400 .72rem/1 var(--condensed); letter-spacing: .08em; }
+.flavor-overview-now { position: absolute; z-index: 4; top: .7rem; right: .55rem; padding: .2rem .35rem; border-radius: 999px; background: var(--ink); color: var(--cream); font-size: .48rem; font-weight: 800; letter-spacing: .07em; opacity: 0; transform: translateY(-5px); transition: opacity .22s ease, transform .22s ease; }
+.flavor-overview-image { position: absolute; z-index: 1; top: 18%; right: 0; left: 0; height: 48%; overflow: hidden; transform: scale(.86) rotate(-3deg); clip-path: ellipse(45% 46% at 50% 50%); transition: transform .5s cubic-bezier(.16,1,.3,1), clip-path .5s cubic-bezier(.16,1,.3,1); }
+.flavor-overview-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 58%, var(--card-bg)); }
+.flavor-overview-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.12) contrast(1.04); transition: transform .65s cubic-bezier(.16,1,.3,1); }
+.flavor-overview-name { position: absolute; z-index: 3; right: .65rem; bottom: .75rem; left: .65rem; font: 400 clamp(.9rem, 1.25vw, 1.35rem)/.9 var(--condensed); letter-spacing: .01em; text-transform: uppercase; overflow-wrap: anywhere; }
+.flavor-overview-arrow { position: absolute; z-index: 4; right: .6rem; bottom: .55rem; font-size: 1.05rem; opacity: 0; transform: translate(-6px,6px); transition: opacity .22s ease, transform .28s ease; }
+.flavor-overview-card:hover, .flavor-overview-card:focus-visible { z-index: 2; color: var(--cream); outline: 0; transform: translateY(-7px); }
+.flavor-overview-card:hover::before, .flavor-overview-card:focus-visible::before { content: ""; position: absolute; z-index: -1; inset: 0; background: var(--card-ink); }
+.flavor-overview-card:hover .flavor-overview-image, .flavor-overview-card:focus-visible .flavor-overview-image { transform: scale(1.05) rotate(0); clip-path: ellipse(62% 54% at 50% 50%); }
+.flavor-overview-card:hover .flavor-overview-image img, .flavor-overview-card:focus-visible .flavor-overview-image img { transform: scale(1.08); }
+.flavor-overview-card:hover .flavor-overview-image::after, .flavor-overview-card:focus-visible .flavor-overview-image::after { background: linear-gradient(180deg, transparent 58%, var(--card-ink)); }
+.flavor-overview-card:hover .flavor-overview-arrow, .flavor-overview-card:focus-visible .flavor-overview-arrow { opacity: 1; transform: translate(0,0); }
+.flavor-overview-card:hover .flavor-overview-name, .flavor-overview-card:focus-visible .flavor-overview-name { right: 1.8rem; }
+.flavor-overview-card.is-active { box-shadow: inset 0 0 0 4px var(--ink); }
+.flavor-overview-card.is-active .flavor-overview-now { opacity: 1; transform: translateY(0); }
+
 .campaign-break { position: relative; min-height: min(76vw, 880px); overflow: hidden; border-bottom: 3px solid var(--ink); background: var(--pink); }
 .campaign-break > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .campaign-break::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(233,72,132,.3), transparent 58%); pointer-events: none; }
@@ -376,6 +401,10 @@ button { color: inherit; font: inherit; }
   .showcase-scene { width: min(54vw, 650px); }
   .showcase-pot { width: min(30vw, 360px); }
   .product-showcase:not([data-showcase-flavor="chocolate"]) .showcase-pot { width: min(38.7vw, 464px); }
+  .flavor-overview-heading h2 { white-space: normal; }
+  .flavor-overview-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .flavor-overview-card { height: clamp(190px, 30vw, 260px); }
+  .flavor-overview-name { font-size: clamp(1.1rem, 2.6vw, 1.7rem); }
   .about-footer { grid-template-columns: 1.05fr .95fr; gap: 1.3rem; }
   .about-footer h3 { font-size: clamp(3.8rem, 7vw, 5.7rem); }
   .about-sticker { left: 18%; }
@@ -438,6 +467,15 @@ button { color: inherit; font: inherit; }
   .showcase-controls { right: 1rem; left: 1rem; }
   .showcase-arrow { width: 42px; height: 42px; }
   .showcase-dots { right: auto; bottom: .55rem; left: 50%; gap: .32rem; transform: translateX(-50%); }
+  .flavor-overview { padding: 5.8rem 1rem 3rem; }
+  .flavor-overview-heading { grid-template-columns: 1fr; gap: .8rem; }
+  .flavor-overview-heading h2 { font-size: clamp(2.8rem, 13vw, 4.5rem); line-height: .86; }
+  .flavor-overview-heading > p { max-width: 29ch; margin: 0; text-align: left; }
+  .flavor-overview-grid { gap: 2px; }
+  .flavor-overview-card { height: clamp(165px, 52vw, 220px); padding: .55rem; }
+  .flavor-overview-number { font-size: .62rem; }
+  .flavor-overview-name { right: .5rem; bottom: .55rem; left: .5rem; font-size: clamp(.78rem, 4.2vw, 1.08rem); }
+  .flavor-overview-now { top: .45rem; right: .4rem; font-size: .4rem; }
   .campaign-break { min-height: 760px; }
   .campaign-break > img { object-position: 62% center; }
   .campaign-copy { top: auto; right: 1rem; bottom: 1.5rem; left: 1rem; transform: none; }
