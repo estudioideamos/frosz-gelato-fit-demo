@@ -87,8 +87,8 @@ button { color: inherit; font: inherit; }
 .about-sticker .sticker-eye, .about-sticker .sticker-spark { fill: currentColor; stroke: none; }
 .about-sticker .sticker-shine { stroke: #fff2ae; stroke-width: 5; }
 .about-sticker .sticker-smile { stroke-width: 6.5; }
-.about-story { position: relative; min-width: 0; min-height: 116px; margin: 1.35rem 0 0; padding: 1.35rem 4.6rem; border-radius: 999px; background: #f3b4c6; display: flex; align-items: center; justify-content: center; text-align: center; }
-.about-story p { margin: 0; color: #f41624; font: 400 clamp(.9rem, 1.05vw, 1.12rem)/1.15 var(--condensed); letter-spacing: calc(.009em + 1px); text-transform: uppercase; }
+.about-story { position: relative; min-width: 0; min-height: 116px; margin: 1.35rem 0 0; padding: 1.25rem 3.4rem; border-radius: 999px; background: #f3b4c6; display: flex; align-items: center; justify-content: center; text-align: center; }
+.about-story p { margin: 0; color: #f41624; font: 400 clamp(1rem, 1.18vw, 1.22rem)/1.12 var(--condensed); letter-spacing: calc(.009em + 1px); text-transform: uppercase; }
 .about-story > span { position: absolute; right: .8rem; bottom: -.8rem; width: 54px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #493f38; color: var(--cream); font-size: 1.6rem; }
 
 /* Slider editorial de productos inspirado en la composicion de Boba. */
@@ -226,7 +226,7 @@ button { color: inherit; font: inherit; }
 .flavor-meta > p:first-child { position: absolute; top: 0; left: 0; font: 400 clamp(.9rem, 1.35vw, 1.3rem)/1 var(--condensed); letter-spacing: .02em; }
 .flavor-meta strong { display: block; margin-top: .2rem; font-size: .78em; font-weight: 400; }
 .flavor-meta h2 { position: absolute; top: 0; left: 50%; font: 400 clamp(1rem, 1.7vw, 1.6rem)/1 var(--condensed); letter-spacing: .02em; text-transform: uppercase; transform: translateX(-50%); }
-.flavor-meta > p:last-child { position: absolute; top: 0; right: 0; max-width: 34ch; text-align: right; font-size: clamp(.72rem, .92vw, .92rem); line-height: 1.25; }
+.flavor-meta > p:last-child { position: absolute; top: 0; right: 0; max-width: 30ch; text-align: right; font-size: clamp(.92rem, 1.12vw, 1.08rem); font-weight: 600; line-height: 1.12; }
 .flavor-hero.is-switching .flavor-meta h2 { opacity: 0; transform: translate(-50%,-14px); }
 .flavor-hero.is-switching .flavor-meta > p:last-child { opacity: 0; transform: translateY(14px); }
 .flavor-hero .flavor-stage { position: absolute; inset: 0; display: grid; place-items: center; }
@@ -487,8 +487,8 @@ button { color: inherit; font: inherit; }
   .about-footer { min-height: 0; grid-template-columns: 1fr; gap: 1.25rem; padding-top: .65rem; }
   .about-footer h3 { width: 100%; font-size: clamp(2.2rem, 9.2vw, 2.55rem); line-height: .92; letter-spacing: .002em; transform: none; }
   .about-sticker { left: auto; right: .1rem; top: 3rem; width: 50px; }
-  .about-story { min-height: 86px; margin: 0; padding: .9rem 2.75rem; border-radius: 42px; align-items: center; justify-content: center; }
-  .about-story p { font-size: .9rem; line-height: 1.12; letter-spacing: 1px; text-align: center; }
+  .about-story { min-height: 90px; margin: 0; padding: .9rem 2.25rem; border-radius: 42px; align-items: center; justify-content: center; }
+  .about-story p { font-size: .98rem; line-height: 1.1; letter-spacing: 1px; text-align: center; }
   .about-story > span { right: .35rem; bottom: -.55rem; width: 42px; font-size: 1.15rem; }
   .product-showcase { --showcase-rail-top: 13.8rem; --showcase-rail-height: clamp(172px, 25vh, 195px); --showcase-word-overlap: 1.2rem; height: calc(100svh - 64px); min-height: 550px; }
   .showcase-content::after { content: ""; position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; height: 76px; border-top: 2px solid currentColor; background: color-mix(in srgb, var(--showcase-bg) 86%, var(--cream)); pointer-events: none; }
@@ -556,7 +556,7 @@ button { color: inherit; font: inherit; }
   .flavor-meta > p:first-child { font-size: .64rem; line-height: .94; }
   .flavor-meta strong { margin-top: .15rem; }
   .flavor-meta h2 { font-size: .76rem; line-height: 1; text-align: center; }
-  .flavor-meta > p:last-child { font-size: .58rem; line-height: 1.12; text-align: right; }
+  .flavor-meta > p:last-child { font-size: .72rem; line-height: 1.08; text-align: right; }
   .flavor-hero .flavor-stage { min-height: 0; }
   .flavor-hero .flavor-image-wrap { width: min(84vw, 350px); transform: translateY(8%); }
   .flavor-hero.is-switching .flavor-image-wrap { transform: translateY(14%) scale(.74) rotate(-3deg); }
