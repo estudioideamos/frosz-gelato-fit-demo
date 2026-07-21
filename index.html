@@ -22,8 +22,9 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260720-flavors60" />
-    <script src="./script.js?v=20260720-flavors60" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260721-stores-full" />
+    <script src="./stores-data.js?v=20260721-stores-full" defer></script>
+    <script src="./script.js?v=20260721-stores-full" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -36,6 +37,7 @@
         <a href="#somos">Somos Frosz</a>
         <a href="#sabores">Sabores</a>
         <a href="#puntos">Dónde comprar</a>
+        <a href="./contacto.html">Contacto</a>
       </nav>
       <a class="nav-cta" href="#puntos">Encontrá tu Frosz <span aria-hidden="true">↗</span></a>
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">
@@ -48,7 +50,16 @@
       <a href="#somos">Somos Frosz</a>
       <a href="#sabores">Sabores</a>
       <a href="#puntos">Dónde comprar</a>
+      <a href="./contacto.html">Contacto</a>
     </nav>
+
+    <a class="instagram-rail" href="https://www.instagram.com/froszgelatofit/" target="_blank" rel="noopener noreferrer" aria-label="Seguir a Frosz en Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.8" r="1"/></svg>
+      <span class="sr-only">Instagram</span>
+    </a>
+    <a class="whatsapp-float" href="https://wa.me/5491160162831" target="_blank" rel="noopener noreferrer" aria-label="Hablar con Frosz por WhatsApp">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26.8 5.2A14.8 14.8 0 0 0 3.6 23l-2 7.2 7.4-1.9A14.8 14.8 0 1 0 26.8 5.2Zm-10.7 23a12.2 12.2 0 0 1-6.2-1.7l-.4-.2-4.4 1.1 1.2-4.2-.3-.5a12.2 12.2 0 1 1 10.1 5.5Zm6.7-9.1c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.3-.4.3-.8.1-2.2-1.1-3.7-2-5.1-4.5-.4-.6.4-.6 1.1-2 .1-.3.1-.5 0-.7l-1.1-2.7c-.3-.7-.6-.6-.8-.6H11c-.3 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.4 3.6 1.6 3.9c.2.2 2.7 4.1 6.5 5.7 2.4 1 3.4 1.1 4.6.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.7.2-1.8-.2-.1-.6-.3-1.3-.5Z"/></svg>
+    </a>
 
     <main id="contenido">
       <section class="flavor-lab flavor-hero is-bursting" id="inicio" aria-labelledby="flavor-title" data-flavor="chocolate">
@@ -258,24 +269,26 @@
           <h2 id="stores-title">TU PROXIMO FROSZ ESTA MAS CERCA DE LO QUE PENSAS.</h2>
         </div>
 
-        <div class="store-filters" role="group" aria-label="Filtrar puntos de venta">
-          <button class="store-filter is-active" type="button" data-zone="all">Todos</button>
-          <button class="store-filter" type="button" data-zone="norte">Zona norte</button>
-          <button class="store-filter" type="button" data-zone="oeste">Zona oeste</button>
-          <button class="store-filter" type="button" data-zone="sur">Zona sur</button>
-          <button class="store-filter" type="button" data-zone="caba">CABA</button>
+        <div class="stores-tools">
+          <div class="store-filters" role="group" aria-label="Filtrar puntos de venta">
+            <button class="store-filter is-active" type="button" data-zone="all">Todos</button>
+            <button class="store-filter" type="button" data-zone="caba">CABA</button>
+            <button class="store-filter" type="button" data-zone="norte">Zona norte</button>
+            <button class="store-filter" type="button" data-zone="oeste">Zona oeste</button>
+            <button class="store-filter" type="button" data-zone="sur">Zona sur</button>
+            <button class="store-filter" type="button" data-zone="costa">Costa atlantica</button>
+          </div>
+          <label class="store-search" for="store-search">
+            <span class="sr-only">Buscar por local, localidad o direccion</span>
+            <input id="store-search" type="search" autocomplete="off" placeholder="BUSCAR LOCAL O LOCALIDAD" />
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+          </label>
         </div>
 
-        <div class="store-grid">
-          <article class="store-card reveal" data-zone="norte"><span>Norte</span><h3>Trainer Gym</h3><p>Av. Sta. María de las Conchas 2310<br />Rincón de Milberg</p></article>
-          <article class="store-card reveal" data-zone="norte"><span>Norte</span><h3>Power Shop</h3><p>Av. del Libertador 13791<br />Martínez</p></article>
-          <article class="store-card reveal" data-zone="norte"><span>Norte</span><h3>Viken Gym</h3><p>Av. del Puerto 240, Local 7<br />Nordelta</p></article>
-          <article class="store-card reveal" data-zone="oeste"><span>Oeste</span><h3>Fit Point</h3><p>Av. Rivadavia 14638<br />Ramos Mejía</p></article>
-          <article class="store-card reveal" data-zone="oeste"><span>Oeste</span><h3>Terra Fitness</h3><p>Cnel. Pablo Zufriategui 790<br />Ituzaingó</p></article>
-          <article class="store-card reveal" data-zone="sur"><span>Sur</span><h3>Focus Fitness</h3><p>Román Bravo 1395<br />Claypole</p></article>
-          <article class="store-card reveal" data-zone="sur"><span>Sudeste</span><h3>La Vaca Rosa</h3><p>Mariano Castex 3289<br />Esteban Echeverría</p></article>
-          <article class="store-card reveal" data-zone="caba"><span>CABA</span><h3>Coquitos Palermo</h3><p>Av. Santa Fe 3351<br />Palermo</p></article>
-          <article class="store-card reveal" data-zone="caba"><span>CABA</span><h3>Monster Fitness</h3><p>Av. Córdoba 3066<br />Palermo</p></article>
+        <p class="stores-count" id="stores-count" aria-live="polite">Cargando puntos...</p>
+        <div class="store-grid" id="store-grid"></div>
+        <div class="stores-more-wrap">
+          <button class="stores-more" id="stores-more" type="button" aria-controls="store-grid">VER 12 MAS <span aria-hidden="true">↓</span></button>
         </div>
       </section>
 

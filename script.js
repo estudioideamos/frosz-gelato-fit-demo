@@ -1,13 +1,13 @@
-const flavors = {
-  chocolate: { index: "01", name: "Chocolate", image: "flavor-chocolate.png", back: "CHOCO", front: "LATE", bg: "#e97cac", accent: "#f5b820", description: "Intenso, cremoso y listo para cambiarte el día." },
-  ddl: { index: "02", name: "Dulce de leche", image: "flavor-ddl.png", back: "DULCE", front: "DE LECHE", bg: "#d49a66", accent: "#f7cf4d", description: "El clásico argentino, llevado a frecuencia fit." },
+﻿const flavors = {
+  chocolate: { index: "01", name: "Chocolate", image: "flavor-chocolate.png", back: "CHOCO", front: "LATE", bg: "#e97cac", accent: "#f5b820", description: "Intenso, cremoso y listo para cambiarte el dÃ­a." },
+  ddl: { index: "02", name: "Dulce de leche", image: "flavor-ddl.png", back: "DULCE", front: "DE LECHE", bg: "#d49a66", accent: "#f7cf4d", description: "El clÃ¡sico argentino, llevado a frecuencia fit." },
   frutilla: { index: "03", name: "Frutilla", image: "flavor-frutilla.png", back: "FRUTI", front: "LLA", bg: "#ed789b", accent: "#f7d856", description: "Frutal, cremosa y siempre de buen humor." },
   frutos: { index: "04", name: "Frutos del bosque", image: "flavor-frutos.png", back: "BERRY", front: "MOOD", bg: "#9d7ad2", accent: "#e84273", description: "Frutal, vibrante y con el punto justo de acidez." },
   mani: { index: "05", name: "Crema de mani", image: "flavor-mani.png", back: "MANI", front: "POWER", bg: "#efaa46", accent: "#ec5668", description: "Cremosa, potente y peligrosamente cucharable." },
-  limon: { index: "06", name: "Mousse de limón", image: "flavor-limon.png", back: "MOUSSE", front: "LIMON", bg: "#f3dc68", accent: "#f4a629", description: "Aireada, cítrica y refrescante hasta la última cucharada." },
-  vainilla: { index: "07", name: "Vainilla", image: "flavor-vainilla.png", back: "VAINI", front: "LLA", bg: "#efd9ac", accent: "#6f3f2d", description: "Suave, perfumada y con toda la cremosidad de un clásico." },
+  limon: { index: "06", name: "Mousse de limÃ³n", image: "flavor-limon.png", back: "MOUSSE", front: "LIMON", bg: "#f3dc68", accent: "#f4a629", description: "Aireada, cÃ­trica y refrescante hasta la Ãºltima cucharada." },
+  vainilla: { index: "07", name: "Vainilla", image: "flavor-vainilla.png", back: "VAINI", front: "LLA", bg: "#efd9ac", accent: "#6f3f2d", description: "Suave, perfumada y con toda la cremosidad de un clÃ¡sico." },
   coco: { index: "08", name: "Coco", image: "flavor-coco.png", back: "COCO", front: "FRESH", bg: "#87c9df", accent: "#f7f0df", description: "Liviano, tropical y listo para bajar un cambio." },
-  banana: { index: "09", name: "Banana", image: "flavor-banana.png", back: "BANA", front: "NA", bg: "#f5c645", accent: "#e84884", description: "Dulce, suave y con energía de tarde soleada." }
+  banana: { index: "09", name: "Banana", image: "flavor-banana.png", back: "BANA", front: "NA", bg: "#f5c645", accent: "#e84884", description: "Dulce, suave y con energÃ­a de tarde soleada." }
 };
 
 const root = document.documentElement;
@@ -383,7 +383,7 @@ reduceMotion.addEventListener?.("change", scheduleShowcaseAutoplay);
 const aboutSlides = [
   { image: "about-gym-01.jpg", alt: "Pote Frosz de chocolate en una escena de entrenamiento sobre banco naranja" },
   { image: "about-gym-02.jpg", alt: "Pote Frosz cremoso en un gimnasio junto a dos deportistas" },
-  { image: "about-gym-03.jpg", alt: "Pote Frosz de chocolate en primer plano después de entrenar" }
+  { image: "about-gym-03.jpg", alt: "Pote Frosz de chocolate en primer plano despuÃ©s de entrenar" }
 ];
 const aboutStage = document.querySelector(".about-stage");
 const aboutImages = [...document.querySelectorAll(".about-image")];
@@ -475,16 +475,89 @@ aboutObserver.observe(aboutStage);
 document.addEventListener("visibilitychange", scheduleAboutAutoplay);
 reduceMotion.addEventListener?.("change", scheduleAboutAutoplay);
 
+const stores = window.FROSZ_STORES || [];
+
+const storeGrid = document.querySelector("#store-grid");
+const storesCount = document.querySelector("#stores-count");
+const storesMore = document.querySelector("#stores-more");
+const storeSearch = document.querySelector("#store-search");
+const storesPerPage = 12;
+let activeStoreZone = "all";
+let visibleStoreLimit = storesPerPage;
+let storeQuery = "";
+
+const normalizeStoreText = (value) => value
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .toLowerCase()
+  .trim();
+
+stores.sort((a, b) => {
+  const byLocality = a[2].localeCompare(b[2], "es", { sensitivity: "base" });
+  return byLocality || a[0].localeCompare(b[0], "es", { sensitivity: "base" });
+});
+
+stores.forEach(([name, address, locality, zone = "caba"]) => {
+  const card = document.createElement("article");
+  const localityLabel = document.createElement("span");
+  const title = document.createElement("h3");
+  const location = document.createElement("p");
+
+  card.className = "store-card reveal";
+  card.dataset.zone = zone;
+  card.dataset.search = normalizeStoreText(`${name} ${address} ${locality}`);
+  localityLabel.textContent = locality;
+  title.textContent = name;
+  location.textContent = address;
+
+  card.append(localityLabel, title, location);
+  storeGrid.append(card);
+});
+
+const updateStoreView = () => {
+  const cards = [...document.querySelectorAll(".store-card")];
+  const matchingCards = cards.filter((card) => {
+    const matchesZone = activeStoreZone === "all" || card.dataset.zone === activeStoreZone;
+    const matchesQuery = !storeQuery || card.dataset.search.includes(storeQuery);
+    return matchesZone && matchesQuery;
+  });
+
+  cards.forEach((card) => { card.hidden = true; });
+  matchingCards.slice(0, visibleStoreLimit).forEach((card) => { card.hidden = false; });
+
+  const visibleStores = Math.min(visibleStoreLimit, matchingCards.length);
+  const remainingStores = Math.max(0, matchingCards.length - visibleStores);
+  storesCount.textContent = matchingCards.length
+    ? `Mostrando ${visibleStores} de ${matchingCards.length} ${matchingCards.length === 1 ? "punto" : "puntos"}`
+    : "No encontramos puntos con esa busqueda";
+  storesMore.hidden = remainingStores === 0;
+  storesMore.innerHTML = remainingStores > storesPerPage
+    ? `VER ${storesPerPage} MAS <span aria-hidden="true">↓</span>`
+    : `VER ${remainingStores} MAS <span aria-hidden="true">↓</span>`;
+};
+
 document.querySelectorAll(".store-filter").forEach((button) => {
   button.addEventListener("click", () => {
     document.querySelector(".store-filter.is-active")?.classList.remove("is-active");
     button.classList.add("is-active");
-    const zone = button.dataset.zone;
-    document.querySelectorAll(".store-card").forEach((card) => {
-      card.hidden = zone !== "all" && card.dataset.zone !== zone;
-    });
+    activeStoreZone = button.dataset.zone;
+    visibleStoreLimit = storesPerPage;
+    updateStoreView();
   });
 });
+
+storesMore.addEventListener("click", () => {
+  visibleStoreLimit += storesPerPage;
+  updateStoreView();
+});
+
+storeSearch.addEventListener("input", () => {
+  storeQuery = normalizeStoreText(storeSearch.value);
+  visibleStoreLimit = storesPerPage;
+  updateStoreView();
+});
+
+updateStoreView();
 
 const newsletterForm = document.querySelector("#newsletter-form");
 const newsletterEmail = document.querySelector("#newsletter-email");
@@ -602,3 +675,4 @@ window.addEventListener("pointermove", (event) => {
   root.style.setProperty("--mouse-x", `${event.clientX}px`);
   root.style.setProperty("--mouse-y", `${event.clientY}px`);
 });
+
