@@ -43,7 +43,8 @@ button { color: inherit; font: inherit; }
 .whatsapp-float { position: fixed; z-index: 89; right: 1.15rem; bottom: 1.15rem; width: 62px; aspect-ratio: 1; overflow: visible; border: 2px solid var(--ink); border-radius: 50%; background: #25d366; color: var(--white); box-shadow: 4px 4px 0 var(--ink); display: grid; place-items: center; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease; }
 .whatsapp-float::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(255,255,255,.38); border-radius: 50%; pointer-events: none; }
 .whatsapp-float:hover, .whatsapp-float:focus-visible { box-shadow: 1px 1px 0 var(--ink); transform: translate(3px,3px) rotate(-5deg) scale(1.05); }
-.whatsapp-float svg { display: block; width: 34px; height: 34px; fill: currentColor; transform: none; }
+.whatsapp-float svg,
+.whatsapp-float img { display: block; width: 34px; height: 34px; object-fit: contain; fill: currentColor; transform: none; }
 
 .hero { position: relative; min-height: 100svh; isolation: isolate; overflow: hidden; display: grid; place-items: center; border-bottom: 3px solid var(--ink); }
 .hero-split { position: absolute; z-index: -3; inset-block: 0; width: 50%; }
@@ -71,7 +72,7 @@ button { color: inherit; font: inherit; }
 .marquee-track { display: flex; width: max-content; padding: .85rem 0; gap: 1.5rem; align-items: center; font: 400 clamp(1.5rem, 3vw, 3.2rem)/1 var(--display); white-space: nowrap; animation: marquee 22s linear infinite; }
 .marquee-track i { color: var(--orange); font-style: normal; }
 
-.manifesto { height: auto; min-height: 0; width: 100%; padding: clamp(9rem, 11vw, 11rem) var(--page-pad) clamp(2rem, 2.8vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; gap: clamp(.75rem, 1.1vw, 1.1rem); background: var(--cream); border-bottom: 3px solid var(--ink); overflow: visible; scroll-margin-top: 1rem; }
+.manifesto { height: auto; min-height: 0; width: 100%; padding: clamp(9rem, 11vw, 11rem) var(--page-pad) clamp(2rem, 2.8vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; gap: clamp(.75rem, 1.1vw, 1.1rem); background: var(--cream); border-bottom: 3px solid var(--ink); overflow: visible; scroll-margin-top: 6rem; }
 .manifesto > * { min-width: 0; }
 .eyebrow { margin: 0 0 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; }
 .social-heading h2, .stores-heading h2 { margin: 0; font: 400 clamp(3.1rem, 7vw, 7.6rem)/.86 var(--display); letter-spacing: -.06em; }
@@ -231,6 +232,12 @@ button { color: inherit; font: inherit; }
 .flavor-masthead h1 span:first-child { justify-self: start; }
 .flavor-masthead h1 span:last-child { justify-self: end; }
 .flavor-masthead h1 b { width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.045em; display: inline-grid; place-items: center; align-self: start; justify-self: center; font: 400 .74em/.78 var(--condensed); letter-spacing: -.02em; transform: scaleX(.88); opacity: .98; text-shadow: 0 .03em 0 rgba(17,17,17,.08); }
+.flavor-masthead h1 .brand-separator { position: relative; align-self: center; justify-self: center; width: clamp(2.55rem, 4vw, 4.1rem); aspect-ratio: 1; margin-top: 0; border: .08em solid currentColor; border-radius: 50%; display: grid; place-items: center; transform: none; box-shadow: inset 0 0 0 .035em rgba(247,240,223,.65); }
+.flavor-masthead h1 .brand-separator::before,
+.flavor-masthead h1 .brand-separator::after { content: ""; position: absolute; border-radius: 999px; background: currentColor; transform-origin: center; }
+.flavor-masthead h1 .brand-separator::before { width: 47%; height: 47%; border-radius: 22% 78% 26% 74% / 70% 26% 74% 30%; transform: rotate(45deg) scale(.92); }
+.flavor-masthead h1 .brand-separator::after { right: 17%; top: 20%; width: 17%; aspect-ratio: 1; opacity: .62; }
+.flavor-masthead h1 .brand-separator i { position: absolute; left: 18%; bottom: 18%; width: 15%; aspect-ratio: 1; border-radius: 50%; background: currentColor; opacity: .5; }
 .flavor-meta { position: relative; min-height: 3.65rem; margin-top: .52rem; }
 .flavor-meta p, .flavor-meta h2 { margin: 0; transition: opacity .24s ease, transform .32s ease; }
 .flavor-meta > p:first-child { position: absolute; top: 0; left: 0; font: 400 clamp(.9rem, 1.35vw, 1.3rem)/1 var(--condensed); letter-spacing: .02em; }
@@ -541,11 +548,11 @@ button { color: inherit; font: inherit; }
   .hero-product-wrap { width: 72vw; margin-top: 5.5rem; }
   .hero-note { font-size: .75rem; bottom: 1.2rem; }
   .round-link { width: 88px; right: 1rem; bottom: .8rem; font-size: .66rem; }
-  .manifesto { height: auto; min-height: 0; padding: 3.2rem 1rem 2.25rem; gap: 1.35rem; }
-  .about-title { position: relative; left: 50%; width: 100vw; margin: 0; padding-inline: 1.15rem; box-sizing: border-box; font-size: clamp(2.75rem, 11.25vw, 3.45rem); line-height: 1.04; white-space: normal; display: grid; justify-items: center; gap: 0; text-align: center; letter-spacing: .013em; transform: translateX(-50%); overflow: hidden; }
-  .about-title span { display: block; width: 100%; max-width: calc(100vw - 2.3rem); text-align: center; white-space: nowrap; transform: none; transform-origin: center; }
+  .manifesto { height: auto; min-height: 0; padding: 2.25rem 0 2.1rem; gap: 1rem; justify-items: center; }
+  .about-title { position: relative; left: auto; width: 100%; margin: 0 auto .05rem; padding-inline: 1rem; box-sizing: border-box; font-size: clamp(2.7rem, 10.9vw, 3.12rem); line-height: 1.08; white-space: normal; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .03em; text-align: center; letter-spacing: .011em; transform: none; overflow: visible; }
+  .about-title span { display: block; width: auto; max-width: calc(100vw - 2rem); text-align: center; white-space: nowrap; transform: none; transform-origin: center; }
   .social-heading h2, .stores-heading h2 { font-size: clamp(2.7rem, 13vw, 4.5rem); }
-  .about-stage { min-height: 310px; aspect-ratio: auto; border-radius: 28px; }
+  .about-stage { width: calc(100% - 2rem); min-height: 300px; aspect-ratio: auto; border-radius: 28px; }
   .about-image { object-position: center; }
   .about-arrow { width: 40px; height: 40px; font-size: 1.5rem; }
   .about-arrow-prev { left: .6rem; }
@@ -683,12 +690,13 @@ button { color: inherit; font: inherit; }
   .instagram-rail:hover, .instagram-rail:focus-visible { transform: translateY(-50%) translateX(2px); }
   .instagram-rail svg { width: 24px; height: 24px; }
   .whatsapp-float { right: .8rem; bottom: .8rem; width: 54px; }
-  .whatsapp-float svg { width: 29px; height: 29px; }
+  .whatsapp-float svg,
+  .whatsapp-float img { width: 29px; height: 29px; }
   .contact-hero { min-height: 0; padding: 7.2rem 1rem 3.5rem; }
   .contact-orbit-one { top: -12rem; right: -10rem; width: 25rem; }
   .contact-orbit-two { bottom: -8rem; left: -12rem; width: 24rem; }
   .contact-heading { margin-inline: auto; margin-bottom: 2rem; text-align: center; }
-  .contact-heading h1 { margin: .45rem auto 1rem; max-width: 10ch; font-size: clamp(3.5rem,16vw,4.6rem); line-height: 1; letter-spacing: -.002em; }
+  .contact-heading h1 { margin: .45rem auto 1rem; max-width: 10ch; font-size: clamp(3.2rem,14.4vw,4.25rem); line-height: 1.08; letter-spacing: .002em; }
   .contact-heading > p:last-child { margin-inline: auto; font-size: .96rem; line-height: 1.3; }
   .contact-form { grid-template-columns: 1fr; padding: 1.1rem; border-radius: 22px; box-shadow: 6px 6px 0 var(--ink); gap: 1rem; }
   .contact-field-message, .contact-actions { grid-column: auto; }
@@ -726,32 +734,52 @@ button { color: inherit; font: inherit; }
 }
 
 @media (max-width: 920px) and (orientation: landscape) {
-  .site-header { top: .45rem; width: calc(100% - 1rem); min-height: 54px; padding: .45rem .9rem; }
+  .site-header { top: .45rem; width: calc(100% - 1rem); min-height: 52px; padding: .42rem .85rem; }
   .site-header.is-sticky { left: 0; width: 100%; transform: none; border-radius: 0; }
-  .mobile-menu-toggle { width: 44px; height: 44px; }
+  .menu-button { width: 44px; height: 44px; }
   .mobile-nav { overflow-y: auto; align-content: start; padding: 5.2rem 1.5rem 2rem; }
   .mobile-nav a { font-size: clamp(2.4rem, 11vw, 5rem); line-height: .9; }
   .hero { min-height: 620px; }
-  .manifesto { padding: 5.2rem clamp(1rem, 4vw, 2rem) 2.5rem; gap: 1rem; }
-  .about-title { position: relative; left: 50%; width: 100vw; margin: 0; padding-inline: clamp(1.2rem,4vw,2.1rem); box-sizing: border-box; justify-content: center; gap: .02em; text-align: center; font-size: clamp(3.25rem, 8.8vw, 5.55rem); line-height: 1.02; white-space: normal; transform: translateX(-50%); overflow: hidden; }
-  .about-title span { display: block; width: 100%; max-width: calc(100vw - clamp(2.4rem,8vw,4.2rem)); text-align: center; white-space: nowrap; }
-  .about-stage { aspect-ratio: 2.7 / 1; min-height: 240px; }
-  .about-footer { gap: 1rem; align-items: center; }
-  .flavor-lab.flavor-hero { height: auto; min-height: 620px; }
-  .flavor-hero .flavor-layout { min-height: 620px; }
+  #inicio, #somos, #sabores, #todos-los-sabores, #puntos, #newsletter { scroll-margin-top: 4.8rem; }
+  .manifesto { padding: 1.15rem 1.35rem 1.25rem; gap: .64rem; }
+  .about-title { position: relative; left: auto; width: min(100%, 760px); margin-inline: auto; padding-inline: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .03em; text-align: center; font-size: clamp(2.35rem, 6.15vw, 3.85rem); line-height: 1.06; white-space: normal; transform: none; overflow: visible; }
+  .about-title span { display: block; width: auto; max-width: 100%; text-align: center; white-space: nowrap; }
+  .about-stage { width: min(100%, 740px); margin-inline: auto; aspect-ratio: 3.9 / 1; min-height: 150px; border-radius: 28px; }
+  .about-footer { width: min(100%, 800px); min-height: 0; margin: .18rem auto 0; display: grid; grid-template-columns: minmax(250px, .92fr) minmax(310px, 1.08fr); gap: 1.05rem; align-items: center; }
+  .about-footer h3 { max-width: 12.2ch; margin-inline: auto; font-size: clamp(1.82rem, 3.85vw, 2.85rem); line-height: 1.02; letter-spacing: .008em; text-align: center; transform: none; }
+  .about-sticker { left: 34%; top: 50%; width: clamp(48px, 5.8vw, 62px); border-width: 5px; }
+  .about-story { min-height: 84px; margin: 0 3.25rem 0 0; padding: .78rem 2.4rem; border-radius: 999px; }
+  .about-story p { max-width: 38ch; margin-inline: auto; font-size: clamp(.88rem, 1.75vw, 1rem); line-height: 1.06; letter-spacing: 1.45px; text-align: center; }
+  .about-story > span { right: .45rem; bottom: -.14rem; width: 38px; font-size: 1.02rem; }
+  .flavor-lab.flavor-hero { height: 100svh; min-height: 470px; }
+  .flavor-hero .flavor-layout { --arc-size: 390px; --arc-right: -160px; --arc-bottom: -300px; min-height: 470px; }
+  .flavor-masthead { top: 5.05rem; right: 1.35rem; left: 1.35rem; }
+  .flavor-masthead h1 { grid-template-columns: minmax(0, .95fr) clamp(1.5rem, 2.8vw, 1.95rem) minmax(0, .95fr); gap: .74rem; font-size: clamp(2.85rem, 8vw, 4.25rem); line-height: .88; letter-spacing: -.012em; }
+  .flavor-masthead h1 .brand-separator { width: clamp(1.55rem, 3vw, 2rem); }
+  .flavor-meta { min-height: 2.8rem; margin-top: .5rem; display: grid; grid-template-columns: minmax(72px, .5fr) minmax(120px, .72fr) minmax(285px, 1.28fr); gap: .95rem; align-items: start; }
+  .flavor-meta > p:first-child, .flavor-meta h2, .flavor-meta > p:last-child { position: static; max-width: none; transform: none; }
+  .flavor-meta > p:first-child { font-size: clamp(.62rem, 1.55vw, .82rem); line-height: .95; text-align: left; }
+  .flavor-meta h2 { min-width: 0; max-width: 10.5ch; font-size: clamp(.84rem, 1.55vw, 1rem); line-height: 1; text-align: center; justify-self: center; overflow-wrap: break-word; }
+  .flavor-meta > p:last-child { display: block; max-width: 34ch; padding-left: .8rem; font-size: clamp(.78rem, 1.58vw, .91rem); line-height: 1.12; text-align: right; justify-self: end; }
+  .flavor-hero .flavor-image-wrap { width: min(30vw, 235px); transform: translateY(38%); }
+  .ingredient-piece { --piece-size: clamp(30px, 4.2vw, 52px); }
+  .flavor-hero .flavor-tabs { right: var(--arc-right); bottom: var(--arc-bottom); width: var(--arc-size); height: var(--arc-size); }
+  .flavor-hero .flavor-tab { width: 46px; height: 46px; }
   .product-showcase { min-height: 620px; height: auto; }
-  .newsletter { min-height: 520px; background-image: radial-gradient(circle at -5% 12%, #ffdc72 0 11%, transparent 11.3%), radial-gradient(circle at 50% 0%, #ffdc72 0 14%, transparent 14.3%), radial-gradient(circle at 105% 18%, #ffdc72 0 12%, transparent 12.3%); }
-  .newsletter-orbit { top: 1.55rem; width: 128%; min-height: 0; height: calc(100% - 1.55rem); border-radius: 50% 50% 0 0 / 60% 60% 0 0; }
-  .newsletter-arc-title { top: .2rem; width: min(94%, 780px); }
-  .newsletter-arc-heading { font-size: 82px; letter-spacing: 1.1px; }
-  .newsletter-arc-copy { font-size: 18px; letter-spacing: .45px; }
-  .newsletter-copy-one { transform: translateY(6px); }
-  .newsletter-copy-two { transform: translateY(-2px); }
-  .newsletter-product { top: 8.6rem; bottom: auto; width: min(70%, 600px); }
-  .newsletter-form { bottom: 1.2rem; width: min(560px, calc(100vw - 4rem)); min-height: 56px; }
+  .newsletter { min-height: 540px; background-image: radial-gradient(circle at -3% 17%, #ffdc72 0 12%, transparent 12.3%), radial-gradient(circle at 47% 1%, #ffdc72 0 15%, transparent 15.3%), radial-gradient(circle at 104% 18%, #ffdc72 0 13%, transparent 13.3%); }
+  .newsletter-orbit { top: 2.35rem; width: 112%; min-height: 0; height: calc(100% - 2.35rem); border-radius: 50% 50% 0 0 / 58% 58% 0 0; }
+  .newsletter-arc-title { top: .75rem; width: min(82%, 610px); }
+  .newsletter-arc-heading { font-size: 82px; letter-spacing: 1.25px; }
+  .newsletter-arc-copy { font-size: 21px; letter-spacing: .36px; }
+  .newsletter-copy-one { transform: translateY(3px); }
+  .newsletter-copy-two { transform: translateY(-3px); }
+  .newsletter-product { top: 7.4rem; bottom: auto; width: min(43%, 348px); }
+  .newsletter-form { bottom: 1.05rem; width: min(460px, calc(100vw - 4.1rem)); min-height: 52px; }
+  .whatsapp-float { width: 44px; right: .78rem; bottom: .78rem; }
+  .instagram-rail { width: 42px; height: 42px; }
   .contact-hero { min-height: auto; padding: 5rem clamp(1rem, 4vw, 2rem) 2.5rem; }
   .contact-heading { max-width: 44rem; margin-inline: auto; text-align: center; }
-  .contact-heading h1 { max-width: 12ch; font-size: clamp(4rem, 12vw, 6.3rem); line-height: .95; }
+  .contact-heading h1 { max-width: 12ch; font-size: clamp(3.4rem, 9.5vw, 5.35rem); line-height: 1.05; letter-spacing: .004em; }
   .contact-panel { grid-template-columns: 1.1fr .9fr; gap: 1rem; }
   .contact-cards { grid-template-columns: 1fr; }
 }
