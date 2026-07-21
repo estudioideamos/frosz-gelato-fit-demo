@@ -227,13 +227,10 @@ button { color: inherit; font: inherit; }
 .flavor-hero { height: 100svh; min-height: 700px; padding: 0; }
 .flavor-hero .flavor-layout { --arc-size: 760px; --arc-right: -310px; --arc-bottom: -500px; --arc-border: 24px; position: relative; display: block; height: 100%; min-height: 0; }
 .flavor-masthead { position: absolute; z-index: 5; top: clamp(6.3rem, 8.4vw, 8rem); right: var(--page-pad); left: var(--page-pad); color: var(--cream); }
-.flavor-masthead h1 { margin: 0; display: grid; grid-template-columns: minmax(0,1fr) clamp(3.05rem, 5vw, 5.15rem) minmax(0,1fr); justify-content: stretch; align-items: start; gap: 1.15rem; font: 400 clamp(4.7rem, 9.8vw, 9.4rem)/.8 var(--condensed); letter-spacing: -.015em; white-space: nowrap; }
+.flavor-masthead h1 { margin: 0; display: grid; grid-template-columns: minmax(0,1fr) clamp(2.55rem, 4vw, 4.35rem) minmax(0,1fr); justify-content: stretch; align-items: start; gap: 1.15rem; font: 400 clamp(4.7rem, 9.8vw, 9.4rem)/.8 var(--condensed); letter-spacing: -.015em; white-space: nowrap; }
 .flavor-masthead h1 span:first-child { justify-self: start; }
 .flavor-masthead h1 span:last-child { justify-self: end; }
-.flavor-masthead h1 b { width: clamp(3.15rem, 5vw, 5.15rem); aspect-ratio: 1; margin-top: -.03em; border: 4px solid currentColor; border-radius: 50%; display: inline-grid; place-items: center; font-size: 0; transform: rotate(-6deg); align-self: center; justify-self: center; opacity: .96; }
-.flavor-masthead h1 b::before, .flavor-masthead h1 b::after { content: ""; grid-area: 1 / 1; width: 76%; height: 8px; border-radius: 999px; background: currentColor; box-shadow: 0 0 0 3px rgba(247,240,223,.22); }
-.flavor-masthead h1 b::before { transform: rotate(43deg); }
-.flavor-masthead h1 b::after { transform: rotate(-43deg); }
+.flavor-masthead h1 b { width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.045em; display: inline-grid; place-items: center; align-self: start; justify-self: center; font: 400 .74em/.78 var(--condensed); letter-spacing: -.02em; transform: scaleX(.88); opacity: .98; text-shadow: 0 .03em 0 rgba(17,17,17,.08); }
 .flavor-meta { position: relative; min-height: 3.65rem; margin-top: .52rem; }
 .flavor-meta p, .flavor-meta h2 { margin: 0; transition: opacity .24s ease, transform .32s ease; }
 .flavor-meta > p:first-child { position: absolute; top: 0; left: 0; font: 400 clamp(.9rem, 1.35vw, 1.3rem)/1 var(--condensed); letter-spacing: .02em; }
@@ -620,8 +617,7 @@ button { color: inherit; font: inherit; }
   .flavor-masthead h1 { position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: .42rem; row-gap: .07em; font-size: clamp(3.9rem, 17.6vw, 5.1rem); line-height: .9; white-space: normal; }
   .flavor-masthead h1 span:first-child, .flavor-masthead h1 span:last-child { justify-self: auto; }
   .flavor-masthead h1 span:last-child { flex-basis: 100%; }
-  .flavor-masthead h1 b { width: 2.15rem; margin-top: -.02em; border-width: 3px; font-size: 0; }
-  .flavor-masthead h1 b::before, .flavor-masthead h1 b::after { height: 6px; border-width: 2px; }
+  .flavor-masthead h1 b { width: auto; margin-top: -.02em; font-size: .72em; line-height: .78; transform: scaleX(.88); }
   .flavor-meta { min-height: 4.7rem; margin-top: .7rem; display: grid; grid-template-columns: .74fr .9fr 1.52fr; align-items: start; gap: .55rem; text-align: left; }
   .flavor-meta > p:first-child, .flavor-meta h2, .flavor-meta > p:last-child { position: static; max-width: none; transform: none; }
   .flavor-meta > p:first-child { font-size: .64rem; line-height: .94; }
@@ -709,8 +705,7 @@ button { color: inherit; font: inherit; }
   .flavor-hero .flavor-layout { --arc-bottom: -425px; }
   .flavor-masthead { top: 5rem; right: .65rem; left: .65rem; }
   .flavor-masthead h1 { column-gap: .2rem; font-size: clamp(2.9rem, 15vw, 3.8rem); line-height: .88; }
-  .flavor-masthead h1 b { width: 1.85rem; border-width: 2px; font-size: 0; }
-  .flavor-masthead h1 b::before, .flavor-masthead h1 b::after { height: 2px; }
+  .flavor-masthead h1 b { width: auto; font-size: .72em; line-height: .78; }
   .flavor-meta { min-height: 1.8rem; margin-top: .35rem; grid-template-columns: 1fr 1fr; gap: .5rem; }
   .flavor-meta > p:first-child { font-size: .5rem; line-height: .92; }
   .flavor-meta h2 { font-size: .61rem; line-height: 1; text-align: right; }
