@@ -21,7 +21,7 @@ const openMobileMenu = () => {
   window.clearTimeout(menuCloseTimer);
   mobileMenu.hidden = false;
   menuButton.setAttribute("aria-expanded", "true");
-  menuButtonLabel.textContent = "Cerrar menú";
+  menuButtonLabel.textContent = "Cerrar menu";
   siteHeader.classList.add("is-menu-open");
   document.body.classList.add("menu-open");
   mobileMenu.style.setProperty("--menu-bg", menuColors[menuColorIndex]);
@@ -32,7 +32,7 @@ const closeMobileMenu = ({ returnFocus = false } = {}) => {
   stopMenuColors();
   mobileMenu.classList.remove("is-open");
   menuButton.setAttribute("aria-expanded", "false");
-  menuButtonLabel.textContent = "Abrir menú";
+  menuButtonLabel.textContent = "Abrir menu";
   siteHeader.classList.remove("is-menu-open");
   document.body.classList.remove("menu-open");
   window.clearTimeout(menuCloseTimer);
@@ -64,7 +64,7 @@ contactForm.addEventListener("submit", (event) => {
   const body = [
     `Nombre: ${data.get("name")}`,
     `Email: ${data.get("email")}`,
-    `Teléfono: ${data.get("phone") || "No informado"}`,
+    `Telefono: ${data.get("phone") || "No informado"}`,
     `Motivo: ${data.get("reason")}`,
     "",
     data.get("message")

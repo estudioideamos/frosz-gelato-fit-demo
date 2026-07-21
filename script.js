@@ -601,7 +601,7 @@ const openMobileMenu = () => {
   window.clearTimeout(menuCloseTimer);
   mobileMenu.hidden = false;
   menuButton.setAttribute("aria-expanded", "true");
-  menuButtonLabel.textContent = "Cerrar menú";
+  menuButtonLabel.textContent = "Cerrar menu";
   siteHeader.classList.add("is-menu-open");
   document.body.classList.add("menu-open");
   menuColorIndex = activeFlavorIndex;
@@ -616,7 +616,7 @@ const closeMobileMenu = ({ returnFocus = false } = {}) => {
   stopMenuColors();
   mobileMenu.classList.remove("is-open");
   menuButton.setAttribute("aria-expanded", "false");
-  menuButtonLabel.textContent = "Abrir menú";
+  menuButtonLabel.textContent = "Abrir menu";
   siteHeader.classList.remove("is-menu-open");
   document.body.classList.remove("menu-open");
 
