@@ -405,8 +405,8 @@ button { color: inherit; font: inherit; }
 .contact-orbit { position: absolute; z-index: -1; border: 3px solid var(--ink); border-radius: 50%; pointer-events: none; }
 .contact-orbit-one { top: -28vw; right: -18vw; width: 58vw; aspect-ratio: 1; background: var(--orange); }
 .contact-orbit-two { bottom: -25vw; left: -18vw; width: 52vw; aspect-ratio: 1; background: var(--lime); }
-.contact-heading { position: relative; max-width: 1050px; margin-bottom: clamp(2.5rem,5vw,5rem); }
-.contact-heading h1 { margin: .5rem 0 1.2rem; color: var(--ink); font: 400 clamp(5.2rem,12vw,12rem)/.77 var(--condensed); letter-spacing: -.025em; }
+.contact-heading { position: relative; max-width: 960px; margin-bottom: clamp(2.5rem,5vw,5rem); }
+.contact-heading h1 { margin: .5rem 0 1.35rem; color: var(--ink); font: 400 clamp(5.2rem,10.8vw,10.8rem)/.84 var(--condensed); letter-spacing: -.018em; text-wrap: balance; }
 .contact-heading > p:last-child { max-width: 620px; margin: 0; font-size: clamp(1.05rem,1.5vw,1.35rem); font-weight: 700; line-height: 1.28; }
 .contact-panel { position: relative; display: grid; grid-template-columns: minmax(0,1.65fr) minmax(270px,.65fr); gap: 1.25rem; align-items: stretch; }
 .contact-form { padding: clamp(1.3rem,2.5vw,2.4rem); border: 3px solid var(--ink); border-radius: 30px; background: var(--cream); box-shadow: 10px 10px 0 var(--ink); display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem 1.5rem; }
@@ -530,8 +530,8 @@ button { color: inherit; font: inherit; }
   .hero-note { font-size: .75rem; bottom: 1.2rem; }
   .round-link { width: 88px; right: 1rem; bottom: .8rem; font-size: .66rem; }
   .manifesto { height: auto; min-height: 0; padding: 3.2rem 1rem 2.25rem; gap: 1.35rem; }
-  .about-title { width: 100%; font-size: clamp(3rem, 12.8vw, 3.55rem); line-height: .9; white-space: normal; display: grid; justify-items: center; gap: .2rem; text-align: center; }
-  .about-title span { width: auto; max-width: 100%; transform: none; transform-origin: center; }
+  .about-title { width: min(100%, 23rem); margin-inline: auto; font-size: clamp(3rem, 13.2vw, 3.75rem); line-height: .88; white-space: normal; display: grid; justify-items: center; gap: .12rem; text-align: center; letter-spacing: .006em; }
+  .about-title span { width: 100%; max-width: 100%; transform: none; transform-origin: center; }
   .social-heading h2, .stores-heading h2 { font-size: clamp(2.7rem, 13vw, 4.5rem); }
   .about-stage { min-height: 310px; aspect-ratio: auto; border-radius: 28px; }
   .about-image { object-position: center; }
@@ -674,8 +674,8 @@ button { color: inherit; font: inherit; }
   .contact-hero { min-height: 0; padding: 7.2rem 1rem 3.5rem; }
   .contact-orbit-one { top: -12rem; right: -10rem; width: 25rem; }
   .contact-orbit-two { bottom: -8rem; left: -12rem; width: 24rem; }
-  .contact-heading { margin-bottom: 2rem; text-align: center; }
-  .contact-heading h1 { margin: .45rem 0 1rem; font-size: clamp(4.25rem,21vw,5.35rem); line-height: .8; }
+  .contact-heading { margin-inline: auto; margin-bottom: 2rem; text-align: center; }
+  .contact-heading h1 { margin: .45rem auto 1rem; max-width: 10ch; font-size: clamp(4rem,19vw,5.2rem); line-height: .86; letter-spacing: -.012em; }
   .contact-heading > p:last-child { margin-inline: auto; font-size: .96rem; line-height: 1.3; }
   .contact-form { grid-template-columns: 1fr; padding: 1.1rem; border-radius: 22px; box-shadow: 6px 6px 0 var(--ink); gap: 1rem; }
   .contact-field-message, .contact-actions { grid-column: auto; }
@@ -709,6 +709,29 @@ button { color: inherit; font: inherit; }
   .flavor-controls { display: none; }
   .ingredient-piece { --piece-size: 30px; }
   .ingredient-piece-2, .ingredient-piece-4, .ingredient-piece-6, .ingredient-piece-8 { display: none; }
+}
+
+@media (max-width: 920px) and (orientation: landscape) {
+  .site-header { top: .45rem; width: calc(100% - 1rem); min-height: 54px; padding: .45rem .9rem; }
+  .site-header.is-sticky { left: 0; width: 100%; transform: none; border-radius: 0; }
+  .mobile-menu-toggle { width: 44px; height: 44px; }
+  .mobile-nav { overflow-y: auto; align-content: start; padding: 5.2rem 1.5rem 2rem; }
+  .mobile-nav a { font-size: clamp(2.4rem, 11vw, 5rem); line-height: .9; }
+  .hero { min-height: 620px; }
+  .manifesto { padding: 5.2rem clamp(1rem, 4vw, 2rem) 2.5rem; gap: 1rem; }
+  .about-title { width: min(100%, 43rem); margin-inline: auto; justify-content: center; gap: clamp(1rem, 3vw, 2rem); text-align: center; font-size: clamp(3.5rem, 10vw, 6.4rem); line-height: .84; white-space: normal; }
+  .about-title span { width: auto; }
+  .about-stage { aspect-ratio: 2.7 / 1; min-height: 240px; }
+  .about-footer { gap: 1rem; align-items: center; }
+  .flavor-lab.flavor-hero { height: auto; min-height: 620px; }
+  .flavor-hero .flavor-layout { min-height: 620px; }
+  .product-showcase { min-height: 620px; height: auto; }
+  .newsletter { min-height: 640px; }
+  .contact-hero { min-height: auto; padding: 5rem clamp(1rem, 4vw, 2rem) 2.5rem; }
+  .contact-heading { max-width: 44rem; margin-inline: auto; text-align: center; }
+  .contact-heading h1 { max-width: none; font-size: clamp(4.6rem, 15vw, 7.8rem); line-height: .84; }
+  .contact-panel { grid-template-columns: 1.1fr .9fr; gap: 1rem; }
+  .contact-cards { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
