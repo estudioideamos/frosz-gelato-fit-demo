@@ -557,10 +557,10 @@ button { color: inherit; font: inherit; }
   .about-arrow { width: 40px; height: 40px; font-size: 1.5rem; }
   .about-arrow-prev { left: .6rem; }
   .about-arrow-next { right: .6rem; }
-  .about-footer { min-height: 0; grid-template-columns: 1fr; gap: 1.25rem; padding-top: .65rem; }
-  .about-footer h3 { width: 100%; font-size: clamp(2.2rem, 9.2vw, 2.55rem); line-height: .92; letter-spacing: .002em; transform: none; }
-  .about-sticker { left: auto; right: .1rem; top: 3rem; width: 50px; }
-  .about-story { min-height: 90px; margin: 0; padding: .9rem 2.25rem; border-radius: 42px; align-items: center; justify-content: center; }
+  .about-footer { width: calc(100% - 2rem); min-height: 0; grid-template-columns: 1fr; gap: 1.25rem; padding-top: .65rem; margin-inline: auto; }
+  .about-footer h3 { width: 100%; max-width: 100%; margin-inline: auto; font-size: clamp(2.05rem, 8.7vw, 2.55rem); line-height: .96; letter-spacing: .002em; text-align: left; transform: none; }
+  .about-sticker { left: auto; right: 0; top: 3rem; width: 50px; }
+  .about-story { width: 100%; min-height: 90px; margin: 0; padding: .9rem 2.25rem; border-radius: 42px; align-items: center; justify-content: center; box-sizing: border-box; }
   .about-story p { font-size: .98rem; line-height: 1.1; letter-spacing: 1px; text-align: center; }
   .about-story > span { right: .35rem; bottom: -.55rem; width: 42px; font-size: 1.15rem; }
   .product-showcase { --showcase-rail-top: 13.8rem; --showcase-rail-height: clamp(172px, 25vh, 195px); --showcase-word-overlap: 1.2rem; height: calc(100svh - 64px); min-height: 550px; }
@@ -745,10 +745,10 @@ button { color: inherit; font: inherit; }
   .about-title { position: relative; left: auto; width: min(100%, 760px); margin-inline: auto; padding-inline: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .03em; text-align: center; font-size: clamp(2.35rem, 6.15vw, 3.85rem); line-height: 1.06; white-space: normal; transform: none; overflow: visible; }
   .about-title span { display: block; width: auto; max-width: 100%; text-align: center; white-space: nowrap; }
   .about-stage { width: min(100%, 740px); margin-inline: auto; aspect-ratio: 3.9 / 1; min-height: 150px; border-radius: 28px; }
-  .about-footer { width: min(100%, 800px); min-height: 0; margin: .18rem auto 0; display: grid; grid-template-columns: minmax(250px, .92fr) minmax(310px, 1.08fr); gap: 1.05rem; align-items: center; }
+  .about-footer { width: min(100%, 740px); min-height: 0; margin: .18rem auto 0; display: grid; grid-template-columns: minmax(250px, .92fr) minmax(310px, 1.08fr); gap: 1.05rem; align-items: center; }
   .about-footer h3 { max-width: 12.2ch; margin-inline: auto; font-size: clamp(1.82rem, 3.85vw, 2.85rem); line-height: 1.02; letter-spacing: .008em; text-align: center; transform: none; }
   .about-sticker { left: 34%; top: 50%; width: clamp(48px, 5.8vw, 62px); border-width: 5px; }
-  .about-story { min-height: 84px; margin: 0 3.25rem 0 0; padding: .78rem 2.4rem; border-radius: 999px; }
+  .about-story { width: 100%; min-height: 84px; margin: 0; padding: .78rem 2.4rem; border-radius: 999px; box-sizing: border-box; }
   .about-story p { max-width: 38ch; margin-inline: auto; font-size: clamp(.88rem, 1.75vw, 1rem); line-height: 1.06; letter-spacing: 1.45px; text-align: center; }
   .about-story > span { right: .45rem; bottom: -.14rem; width: 38px; font-size: 1.02rem; }
   .flavor-lab.flavor-hero { height: 100svh; min-height: 470px; }
