@@ -232,12 +232,9 @@ button { color: inherit; font: inherit; }
 .flavor-masthead h1 span:first-child { justify-self: start; }
 .flavor-masthead h1 span:last-child { justify-self: end; }
 .flavor-masthead h1 b { width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.045em; display: inline-grid; place-items: center; align-self: start; justify-self: center; font: 400 .74em/.78 var(--condensed); letter-spacing: -.02em; transform: scaleX(.88); opacity: .98; text-shadow: 0 .03em 0 rgba(17,17,17,.08); }
-.flavor-masthead h1 .brand-separator { position: relative; align-self: center; justify-self: center; width: clamp(2.55rem, 4vw, 4.1rem); aspect-ratio: 1; margin-top: 0; border: .08em solid currentColor; border-radius: 50%; display: grid; place-items: center; transform: none; box-shadow: inset 0 0 0 .035em rgba(247,240,223,.65); }
+.flavor-masthead h1 .brand-separator { align-self: center; justify-self: center; width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.035em; border: 0; border-radius: 0; box-shadow: none; }
 .flavor-masthead h1 .brand-separator::before,
-.flavor-masthead h1 .brand-separator::after { content: ""; position: absolute; border-radius: 999px; background: currentColor; transform-origin: center; }
-.flavor-masthead h1 .brand-separator::before { width: 47%; height: 47%; border-radius: 22% 78% 26% 74% / 70% 26% 74% 30%; transform: rotate(45deg) scale(.92); }
-.flavor-masthead h1 .brand-separator::after { right: 17%; top: 20%; width: 17%; aspect-ratio: 1; opacity: .62; }
-.flavor-masthead h1 .brand-separator i { position: absolute; left: 18%; bottom: 18%; width: 15%; aspect-ratio: 1; border-radius: 50%; background: currentColor; opacity: .5; }
+.flavor-masthead h1 .brand-separator::after { content: none; }
 .flavor-meta { position: relative; min-height: 3.65rem; margin-top: .52rem; }
 .flavor-meta p, .flavor-meta h2 { margin: 0; transition: opacity .24s ease, transform .32s ease; }
 .flavor-meta > p:first-child { position: absolute; top: 0; left: 0; font: 400 clamp(.9rem, 1.35vw, 1.3rem)/1 var(--condensed); letter-spacing: .02em; }
