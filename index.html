@@ -344,8 +344,10 @@
           </div>
 
           <form class="newsletter-form" id="newsletter-form" novalidate>
-            <label class="sr-only" for="newsletter-email">Tu email</label>
-            <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="TU EMAIL" required />
+            <div class="newsletter-input-wrap">
+              <label class="sr-only" for="newsletter-email">Tu email</label>
+              <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="TU EMAIL" data-lpignore="true" data-1p-ignore="true" data-form-type="other" required />
+            </div>
             <button type="submit">QUIERO LA PRIMICIA <span aria-hidden="true">&#8599;</span></button>
             <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
           </form>
