@@ -399,7 +399,6 @@ button { color: inherit; font: inherit; }
 .site-footer { padding: 1.2rem var(--page-pad); background: var(--ink); color: #a7a7a7; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; border-bottom: 3px solid var(--ink); }
 .site-footer p { margin: 0; font-size: .8rem; font-weight: 700; }
 .brand-footer { width: 112px; }
-.brand-footer img { filter: invert(68%); }
 .footer-signoff { display: grid; gap: .35rem; text-align: right; }
 .footer-copyright { letter-spacing: .06em; text-transform: uppercase; }
 .footer-credit { font-weight: 500 !important; }
