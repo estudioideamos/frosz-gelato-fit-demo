@@ -228,13 +228,9 @@ button { color: inherit; font: inherit; }
 .flavor-hero { height: 100svh; min-height: 700px; padding: 0; }
 .flavor-hero .flavor-layout { --arc-size: 760px; --arc-right: -310px; --arc-bottom: -500px; --arc-border: 24px; position: relative; display: block; height: 100%; min-height: 0; }
 .flavor-masthead { position: absolute; z-index: 5; top: clamp(6.3rem, 8.4vw, 8rem); right: var(--page-pad); left: var(--page-pad); color: var(--cream); }
-.flavor-masthead h1 { margin: 0; display: grid; grid-template-columns: minmax(0,1fr) clamp(2.55rem, 4vw, 4.35rem) minmax(0,1fr); justify-content: stretch; align-items: start; gap: 1.15rem; font: 400 clamp(4.7rem, 9.8vw, 9.4rem)/.8 var(--condensed); letter-spacing: -.015em; white-space: nowrap; }
+.flavor-masthead h1 { margin: 0; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); justify-content: stretch; align-items: start; gap: 1.15rem; font: 400 clamp(4.7rem, 9.8vw, 9.4rem)/.8 var(--condensed); letter-spacing: -.015em; white-space: nowrap; }
 .flavor-masthead h1 span:first-child { justify-self: start; }
 .flavor-masthead h1 span:last-child { justify-self: end; }
-.flavor-masthead h1 b { width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.045em; display: inline-grid; place-items: center; align-self: start; justify-self: center; font: 400 .74em/.78 var(--condensed); letter-spacing: -.02em; transform: scaleX(.88); opacity: .98; text-shadow: 0 .03em 0 rgba(17,17,17,.08); }
-.flavor-masthead h1 .brand-separator { align-self: center; justify-self: center; width: clamp(2.55rem, 4vw, 4.35rem); margin-top: -.035em; border: 0; border-radius: 0; box-shadow: none; }
-.flavor-masthead h1 .brand-separator::before,
-.flavor-masthead h1 .brand-separator::after { content: none; }
 .flavor-meta { position: relative; min-height: 3.65rem; margin-top: .52rem; }
 .flavor-meta p, .flavor-meta h2 { margin: 0; transition: opacity .24s ease, transform .32s ease; }
 .flavor-meta > p:first-child { position: absolute; top: 0; left: 0; font: 400 clamp(.9rem, 1.35vw, 1.3rem)/1 var(--condensed); letter-spacing: .02em; }
@@ -625,7 +621,6 @@ button { color: inherit; font: inherit; }
   .flavor-masthead h1 { position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: .42rem; row-gap: .07em; font-size: clamp(3.9rem, 17.6vw, 5.1rem); line-height: .9; white-space: normal; }
   .flavor-masthead h1 span:first-child, .flavor-masthead h1 span:last-child { justify-self: auto; }
   .flavor-masthead h1 span:last-child { flex-basis: 100%; }
-  .flavor-masthead h1 b { width: auto; margin-top: -.02em; font-size: .72em; line-height: .78; transform: scaleX(.88); }
   .flavor-meta { min-height: 4.7rem; margin-top: .7rem; display: grid; grid-template-columns: .74fr .9fr 1.52fr; align-items: start; gap: .55rem; text-align: left; }
   .flavor-meta > p:first-child, .flavor-meta h2, .flavor-meta > p:last-child { position: static; max-width: none; transform: none; }
   .flavor-meta > p:first-child { font-size: .64rem; line-height: .94; }
@@ -755,8 +750,7 @@ button { color: inherit; font: inherit; }
   .flavor-lab.flavor-hero { height: 100svh; min-height: 470px; }
   .flavor-hero .flavor-layout { --arc-size: 390px; --arc-right: -160px; --arc-bottom: -300px; min-height: 470px; }
   .flavor-masthead { top: 5.05rem; right: 1.35rem; left: 1.35rem; }
-  .flavor-masthead h1 { grid-template-columns: minmax(0, .95fr) clamp(1.5rem, 2.8vw, 1.95rem) minmax(0, .95fr); gap: .74rem; font-size: clamp(2.85rem, 8vw, 4.25rem); line-height: .88; letter-spacing: -.012em; }
-  .flavor-masthead h1 .brand-separator { width: clamp(1.55rem, 3vw, 2rem); }
+  .flavor-masthead h1 { grid-template-columns: minmax(0, .95fr) minmax(0, .95fr); gap: .74rem; font-size: clamp(2.85rem, 8vw, 4.25rem); line-height: .88; letter-spacing: -.012em; }
   .flavor-meta { min-height: 2.8rem; margin-top: .5rem; display: grid; grid-template-columns: minmax(72px, .5fr) minmax(120px, .72fr) minmax(285px, 1.28fr); gap: .95rem; align-items: start; }
   .flavor-meta > p:first-child, .flavor-meta h2, .flavor-meta > p:last-child { position: static; max-width: none; transform: none; }
   .flavor-meta > p:first-child { font-size: clamp(.62rem, 1.55vw, .82rem); line-height: .95; text-align: left; }
