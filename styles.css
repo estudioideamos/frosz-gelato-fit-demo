@@ -36,13 +36,16 @@ button { color: inherit; font: inherit; }
 .desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { transform: scaleX(1); }
 .nav-cta { justify-self: end; border-radius: 999px; background: var(--ink); color: var(--white); padding: .78rem 1rem; font-weight: 700; font-size: .86rem; }
 .menu-button, .mobile-nav { display: none; }
-.instagram-rail { position: fixed; z-index: 88; top: 50%; left: 0; width: 48px; height: 48px; overflow: hidden; border: 0; border-radius: 0; background: linear-gradient(135deg, #833ab4 0%, #c13584 28%, #e1306c 48%, #fd1d1d 68%, #f77737 86%, #fcaf45 100%); color: #fff; box-shadow: 0 8px 22px rgba(0,0,0,.18); display: grid; place-items: center; transform: translateY(-50%); isolation: isolate; transition: transform .2s ease, filter .2s ease; }
-.instagram-rail::after { content: none; }
-.instagram-rail:hover, .instagram-rail:focus-visible { filter: saturate(1.15) brightness(1.04); transform: translateY(-50%) translateX(2px); }
-.instagram-rail svg { display: block; width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 2.35; stroke-linecap: round; stroke-linejoin: round; }
-.whatsapp-float { position: fixed; z-index: 89; right: 1.15rem; bottom: 1.15rem; width: 62px; aspect-ratio: 1; overflow: visible; border: 2px solid var(--ink); border-radius: 50%; background: #25d366; color: var(--white); box-shadow: 4px 4px 0 var(--ink); display: grid; place-items: center; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease; }
+.social-float { position: fixed; z-index: 89; right: 1.15rem; bottom: 1.15rem; display: flex; align-items: center; gap: .7rem; }
+.instagram-rail,
+.whatsapp-float { position: relative; overflow: visible; width: 62px; aspect-ratio: 1; border: 2px solid var(--ink); border-radius: 50%; color: var(--white); box-shadow: 4px 4px 0 var(--ink); display: grid; place-items: center; transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease; }
+.instagram-rail::after,
 .whatsapp-float::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(255,255,255,.38); border-radius: 50%; pointer-events: none; }
+.instagram-rail:hover, .instagram-rail:focus-visible,
 .whatsapp-float:hover, .whatsapp-float:focus-visible { box-shadow: 1px 1px 0 var(--ink); transform: translate(3px,3px) rotate(-5deg) scale(1.05); }
+.instagram-rail { background: linear-gradient(135deg, #833ab4 0%, #c13584 28%, #e1306c 48%, #fd1d1d 68%, #f77737 86%, #fcaf45 100%); }
+.instagram-rail svg { display: block; width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.whatsapp-float { background: #25d366; }
 .whatsapp-float svg,
 .whatsapp-float img { display: block; width: 34px; height: 34px; object-fit: contain; fill: currentColor; transform: none; }
 
@@ -682,10 +685,10 @@ button { color: inherit; font: inherit; }
   .footer-signoff { justify-items: center; width: 100%; max-width: none; text-align: center; }
   .footer-credit { line-height: 1.45; }
   .footer-credit .footer-mobile-break { display: inline; }
-  .instagram-rail { top: 50%; bottom: auto; width: 46px; height: 46px; transform: translateY(-50%); }
-  .instagram-rail:hover, .instagram-rail:focus-visible { transform: translateY(-50%) translateX(2px); }
-  .instagram-rail svg { width: 24px; height: 24px; }
-  .whatsapp-float { right: .8rem; bottom: .8rem; width: 54px; }
+  .social-float { right: .8rem; bottom: .8rem; gap: .55rem; }
+  .instagram-rail,
+  .whatsapp-float { width: 54px; }
+  .instagram-rail svg { width: 26px; height: 26px; }
   .whatsapp-float svg,
   .whatsapp-float img { width: 29px; height: 29px; }
   .contact-hero { min-height: 0; padding: 7.2rem 1rem 3.5rem; }
@@ -771,8 +774,12 @@ button { color: inherit; font: inherit; }
   .newsletter-product { top: 7.4rem; bottom: auto; width: min(43%, 348px); }
   .newsletter-form { bottom: 1.05rem; width: min(460px, calc(100vw - 4.1rem)); height: 52px; min-height: 0; padding: .35rem .38rem .35rem 1rem; }
   .newsletter-form button { min-width: 0; min-height: 44px; }
-  .whatsapp-float { width: 44px; right: .78rem; bottom: .78rem; }
-  .instagram-rail { width: 42px; height: 42px; }
+  .social-float { right: .78rem; bottom: .78rem; gap: .45rem; }
+  .instagram-rail,
+  .whatsapp-float { width: 44px; }
+  .instagram-rail svg { width: 21px; height: 21px; }
+  .whatsapp-float svg,
+  .whatsapp-float img { width: 23px; height: 23px; }
   .contact-hero { min-height: auto; padding: 5rem clamp(1rem, 4vw, 2rem) 2.5rem; }
   .contact-heading { max-width: 44rem; margin-inline: auto; text-align: center; }
   .contact-heading h1 { max-width: 12ch; font-size: clamp(3.4rem, 9.5vw, 5.35rem); line-height: 1.05; letter-spacing: .004em; }
