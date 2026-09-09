@@ -676,3 +676,15 @@ window.addEventListener("pointermove", (event) => {
   root.style.setProperty("--mouse-y", `${event.clientY}px`);
 });
 
+const socialFloat = document.querySelector(".social-float");
+const siteFooter = document.querySelector(".site-footer");
+if (socialFloat && siteFooter) {
+  const syncSocialFloat = () => {
+    const isNearFooter = siteFooter.getBoundingClientRect().top < window.innerHeight;
+    socialFloat.classList.toggle("is-hidden", isNearFooter);
+  };
+  syncSocialFloat();
+  window.addEventListener("scroll", syncSocialFloat, { passive: true });
+  window.addEventListener("resize", syncSocialFloat);
+}
+
