@@ -497,6 +497,7 @@ stores.sort((a, b) => {
   return byLocality || a[0].localeCompare(b[0], "es", { sensitivity: "base" });
 });
 
+storeGrid.innerHTML = "";
 stores.forEach(([name, address, locality, zone = "caba"]) => {
   const card = document.createElement("article");
   const localityLabel = document.createElement("span");

@@ -3,3 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home9/froszcom/public_html/
     - /bin/cp -r ./* $DEPLOYPATH
+    - /bin/cp -f ./.htaccess $DEPLOYPATH
