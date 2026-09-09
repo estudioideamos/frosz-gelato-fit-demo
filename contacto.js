@@ -53,6 +53,9 @@ document.addEventListener("keydown", (event) => {
 
 const contactForm = document.querySelector("#contact-form");
 const contactStatus = document.querySelector("#contact-status");
+const contactFormLoadedAt = Date.now();
+const MIN_FILL_TIME_MS = 3000;
+
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!contactForm.checkValidity()) {
@@ -60,6 +63,11 @@ contactForm.addEventListener("submit", (event) => {
     return;
   }
   const data = new FormData(contactForm);
+
+  // Anti-spam: campo honeypot lleno o envio demasiado rapido = probable bot.
+  if (data.get("company")) return;
+  if (Date.now() - contactFormLoadedAt < MIN_FILL_TIME_MS) return;
+
   const subject = `[Web Frosz] ${data.get("reason")}`;
   const body = [
     `Nombre: ${data.get("name")}`,

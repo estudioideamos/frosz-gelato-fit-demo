@@ -422,6 +422,7 @@ button { color: inherit; font: inherit; }
 .contact-heading > p:last-child { max-width: 620px; margin: 0; font-size: clamp(1.05rem,1.5vw,1.35rem); font-weight: 700; line-height: 1.28; }
 .contact-panel { position: relative; display: grid; grid-template-columns: minmax(0,1.65fr) minmax(270px,.65fr); gap: 1.25rem; align-items: stretch; }
 .contact-form { padding: clamp(1.3rem,2.5vw,2.4rem); border: 3px solid var(--ink); border-radius: 30px; background: var(--cream); box-shadow: 10px 10px 0 var(--ink); display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.25rem 1.5rem; }
+.contact-honeypot { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .contact-field { display: grid; gap: .5rem; }
 .contact-field label { display: inline-flex; align-items: center; gap: .45rem; font-size: .72rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .contact-field label::before { content: ""; width: 1.8rem; height: 1.8rem; border: 2px solid var(--ink); border-radius: 50%; background-color: var(--orange); background-position: center; background-repeat: no-repeat; background-size: 68%; color: var(--ink); display: grid; place-items: center; box-shadow: 3px 3px 0 var(--ink); transform: rotate(-4deg); }

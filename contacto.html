@@ -56,8 +56,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260909-webp" />
-    <script src="./contacto.js?v=20260909-webp" defer></script>
+    <link rel="stylesheet" href="./styles.css?v=20260909-antispam" />
+    <script src="./contacto.js?v=20260909-antispam" defer></script>
   </head>
   <body class="contact-page">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -131,6 +131,10 @@
             <div class="contact-field contact-field-message">
               <label for="contact-message">Mensaje</label>
               <textarea id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="contact-honeypot" aria-hidden="true">
+              <label for="contact-company">Empresa</label>
+              <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
             </div>
             <div class="contact-actions">
               <p id="contact-status" role="status" aria-live="polite">Te respondemos con la misma energia con la que servimos cada pote.</p>
