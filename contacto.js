@@ -72,3 +72,15 @@ contactForm.addEventListener("submit", (event) => {
   contactStatus.textContent = "LISTO. ABRIMOS TU CORREO PARA ENVIAR EL MENSAJE.";
   window.location.href = `mailto:contacto@frosz.com.ar?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 });
+
+const socialFloat = document.querySelector(".social-float");
+const siteFooter = document.querySelector(".site-footer");
+if (socialFloat && siteFooter) {
+  const syncSocialFloat = () => {
+    const isNearFooter = siteFooter.getBoundingClientRect().top < window.innerHeight;
+    socialFloat.classList.toggle("is-hidden", isNearFooter);
+  };
+  syncSocialFloat();
+  window.addEventListener("scroll", syncSocialFloat, { passive: true });
+  window.addEventListener("resize", syncSocialFloat);
+}
