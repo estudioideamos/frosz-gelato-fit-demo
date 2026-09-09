@@ -405,6 +405,7 @@ button { color: inherit; font: inherit; }
 .footer-credit strong { font-weight: 800; }
 .footer-credit span { display: inline-block; transform: translateY(1px); animation: footerHeartbeat 2.4s ease-in-out infinite; }
 .footer-credit .footer-mobile-break { display: none; transform: none; animation: none; }
+.footer-credit-by { display: inline-flex; align-items: center; gap: .45em; }
 .footer-credit-brand { display: inline-flex; align-items: center; transition: opacity .2s ease, transform .2s ease; }
 .footer-credit-brand img { height: 1.35em; width: auto; display: block; }
 .footer-credit-brand:hover, .footer-credit-brand:focus-visible { opacity: .82; transform: translateY(-1px); }
