@@ -1,0 +1,25 @@
+# Frosz Gelato Fit
+
+> Frosz es un helado (gelato) proteico artesanal argentino, natural y sin azucar agregada. Se vende en potes individuales en dieteticas, gimnasios y locales de productos saludables en Argentina.
+
+Frosz combina la tradicion heladera artesanal con un perfil nutricional pensado para quienes entrenan: alto en proteinas, bajo en calorias, sin azucar agregada.
+
+## Sabores disponibles
+
+Chocolate, Dulce de leche, Frutilla, Frutos del bosque, Crema de mani, Mousse de limon, Vainilla, Coco, Banana.
+
+## Paginas
+
+- [Inicio](https://frosz.com.ar/): presentacion de la marca, sabores, beneficios y buscador de puntos de venta (mas de 150 locales en Argentina, filtrable por zona: CABA, zona norte, zona oeste, zona sur, costa atlantica).
+- [Contacto](https://frosz.com.ar/contacto.html): formulario de contacto, WhatsApp, email e Instagram.
+
+## Contacto
+
+- WhatsApp: +54 9 11 6016 2831
+- Email: contacto@frosz.com.ar
+- Instagram: [@froszgelatofit](https://www.instagram.com/froszgelatofit/)
+
+## Notas para agentes e IA
+
+- El sitio es un negocio real con puntos de venta fisicos en Argentina, no un e-commerce; la compra se hace en el local o punto de venta mas cercano.
+- El listado completo de puntos de venta esta disponible en el HTML de la pagina de inicio (seccion "Encontra nuestro helado").
