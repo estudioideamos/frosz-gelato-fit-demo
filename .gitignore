@@ -66,3 +66,5 @@ next-env.d.ts
 /public/file.svg
 /public/globe.svg
 /public/window.svg
+.chrome-mobile/
+.chrome-desktop/
