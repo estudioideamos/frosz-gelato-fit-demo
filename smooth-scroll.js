@@ -4,21 +4,20 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (reduceMotion.matches || !("onwheel" in document)) return;
 
-  var EASE = 0.075; // lower = slower, more continuous catch-up
-  var MAX_STEP = 140; // clamp a single wheel tick so a hard fling can't skip ahead
+  var EASE = 0.1; // lower = slower, more continuous catch-up (0.1 matches what most smooth-scroll libraries default to)
+  var MAX_STEP = 600; // clamp a single wheel tick so only a freak input value gets capped
 
   var current = window.scrollY;
   var target = current;
   var ticking = false;
-  var maxScroll = 0;
   var syncTimer = null;
 
-  function updateMaxScroll() {
-    maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  // Recomputed on every wheel tick instead of cached, because this page grows
+  // after load (lazy images, the "ver mas" store list expansion, etc.) — a
+  // stale max would clamp the target below the real bottom and feel "stuck".
+  function getMaxScroll() {
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   }
-  updateMaxScroll();
-  window.addEventListener("resize", updateMaxScroll);
-  window.addEventListener("load", updateMaxScroll);
 
   function normalizeDelta(event) {
     var delta = event.deltaY;
@@ -32,6 +31,9 @@
   }
 
   function render() {
+    // Re-clamp every frame too, not just on the wheel tick that started the glide:
+    // content can finish growing (a lazy image settling in) mid-animation.
+    target = Math.max(0, Math.min(getMaxScroll(), target));
     current += (target - current) * EASE;
     if (Math.abs(target - current) < 0.5) current = target;
     window.scrollTo(0, current);
@@ -54,7 +56,7 @@
     event.preventDefault();
     var delta = normalizeDelta(event);
     delta = Math.max(-MAX_STEP, Math.min(MAX_STEP, delta));
-    target = Math.max(0, Math.min(maxScroll, target + delta));
+    target = Math.max(0, Math.min(getMaxScroll(), target + delta));
     requestTick();
   }
 
