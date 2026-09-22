@@ -4,7 +4,9 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (reduceMotion.matches || !("onwheel" in document)) return;
 
-  var EASE = 0.1; // lower = slower, more continuous catch-up (0.1 matches what most smooth-scroll libraries default to)
+  var EASE = 0.2; // lower = slower, more continuous catch-up. A traditional mouse sends a few big discrete
+  // clicks (not many small continuous deltas like a trackpad), so a low value here reads as
+  // "laggy/heavy" instead of "smooth" on mouse users — keep this snappy enough to feel responsive.
   var MAX_STEP = 600; // clamp a single wheel tick so only a freak input value gets capped
 
   var current = window.scrollY;
