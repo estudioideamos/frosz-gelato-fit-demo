@@ -11,14 +11,18 @@
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-caESDJC0ZyvUSqQIKz+Hlv5vtxzHqpdhyGhG+Ze4jlg=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
 </IfModule>
 
 # No listar directorios
 Options -Indexes
 
-# Bloquear archivos ocultos (.env, .git, etc.)
+# Bloquear archivos ocultos (.env, .git, etc.) y restos de instalaciones viejas
 <FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(log|ini|bak|sql|zip)$">
   Require all denied
 </FilesMatch>
 
